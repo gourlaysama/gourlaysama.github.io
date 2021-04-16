@@ -1,14 +1,11 @@
-baseurl: /tufte-jekyll
-title: Tufte-Jekyll
-subtitle: Content-centric blogging
-author: clay harmon
+title: Gourlaysama's blog
+subtitle: Documenting musings and mistakes
+author: Antoine Gourlay
 simple_search: http://google.com/search
-description: A Jekyll theme for content-rich sites
-name: tufte
-markdown: kramdown
-markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+description: My blog
+name: gourlaysama-blog
 permalink: /articles/:short_year/:title
-timezone: America/New_York
+timezone: Europe/Paris
 excerpt_separator: <!--more-->  # you can specify your own separator, of course.
 exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'UploadToGithub.Rakefile', 'README.md']
 post:
@@ -17,11 +14,6 @@ post:
 page:
   template: _page.txt
   extension: md
-editor: gvim
+editor: vim
 git:
-  branch: master
-transfer:
-  command: rsync
-  settings: -av
-  source: _site/
-  destination: ~/Git/clayh53.github.com/
+  branch: local

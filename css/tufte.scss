@@ -274,7 +274,9 @@ img { max-width: 100%; }
                          font-size: 1.0rem;
                          line-height: 1.96; //changed to bring line heights into rational pattern
                          vertical-align: baseline;
-                         position: relative; }
+                         position: relative;
+                         text-align: initial;
+                        }
 
 
 li .sidenote, li .marginnote{ margin-right: -80%; } //added to allow for the fact that lists are indented and marginnotes and sidenotes push to right
@@ -298,7 +300,12 @@ blockquote .sidenote, blockquote .marginnote { margin-right: -79% }
                    color: $contrast-color;
                    top: 0rem; } //removed superscripting for numerical reference in sidenote
 
-p, footer, div.table-wrapper,  .MJXc-display { width: 55%; }
+p, footer, div.table-wrapper,  .MJXc-display {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  width: 55%;
+}
 
 div.table-wrapper, table { overflow-x: auto; } //changed all overflow values to 'auto' so scroll bars appear only as needed
 
