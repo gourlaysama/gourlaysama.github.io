@@ -1,14 +1,6 @@
-- link: //www.twitter.com/twitter_handle 
-  icon: icon-twitter
-- link: //plus.google.com/+googlePlusName 
-  icon: icon-google2
-- link: //github.com/GithubHandle 
-  icon: icon-github
-- link: //www.flickr.com/photos/FlickrUserID 
-  icon: icon-flickr3
-- link: /feed 
+- link: /feed.xml
   icon: icon-rss2
-- link: //vimeo.com/vimeo-id
-  icon: icon-vimeo2
-- link: //www.linkedin.com/
-  icon: icon-linkedin
+- link: //www.twitter.com/gourlaysama
+  icon: icon-twitter
+- link: //github.com/gourlaysama
+  icon: icon-github

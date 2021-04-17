@@ -4,7 +4,7 @@ author: Antoine Gourlay
 simple_search: http://google.com/search
 description: My blog
 name: gourlaysama-blog
-permalink: /articles/:short_year/:title
+permalink: /:slugified_categories/:short_year/:slug
 timezone: Europe/Paris
 excerpt_separator: <!--more-->  # you can specify your own separator, of course.
 exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'UploadToGithub.Rakefile', 'README.md']

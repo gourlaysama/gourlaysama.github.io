@@ -1,8 +1,51 @@
----
-layout: default
----
-<h1>{{ page.title}}</h1>
-<p class="subtitle">{{ page.date | date: "%B %-d, %Y" }}</p>
-
-{{ content | hyphenate }}
-
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+    <article class="group">
+      <h1>{{ page.title}}</h1>
+      <p class="subtitle">{{ page.date | date: "%B %-d, %Y" }}</p>
+      {{ content | hyphenate }}
+    </article>
+    
+        {% assign articles = site.categories[page.category] | reverse %}
+        {% for article in articles %}
+          {% if article.title == page.title %}
+            {% assign currIndex = forloop.index0 %}
+            {% assign prevIndex = currIndex | minus: 1 %}
+            {% assign nextIndex = currIndex | plus: 1 %}
+            {% assign articleIndexLength = forloop.length | minus: 1 %}
+            {% if articleIndexLength != 0 %}
+            <p>
+            <div class="nav-page">
+            <hr class="slender">
+                {% if currIndex == 0 %}
+                <div class="nav-next">
+                <a href="{{ articles[nextIndex].url | prepend: site.baseurl }}"><h3 class="contrast">{{ articles[nextIndex].title }} &raquo;</h3></a>
+                <br><span>{{ articles[nextIndex].date | date: "%B %-d, %Y" }}</span>  <br/>
+                </div>
+                {% elsif currIndex < articleIndexLength and currIndex != 0 %}
+                <div class="nav-next">
+                  <a href="{{ articles[nextIndex].url | prepend: site.baseurl }}"><h3 class="contrast">{{ articles[nextIndex].title }} &raquo;</h3></a>
+                  <br><span>{{ articles[nextIndex].date | date: "%B %-d, %Y" }}</span>  <br/>
+                </div>
+                  <div class="nav-prev">
+                    <a href="{{ articles[prevIndex].url | prepend: site.baseurl }}"><h3 class="contrast">&laquo; {{ articles[prevIndex].title }}</h3></a>
+                    <br><span>{{ articles[prevIndex].date | date: "%B %-d, %Y" }}</span>  <br/>
+                  </div>
+                {% elsif currIndex == articleIndexLength %}
+                <div class="nav-prev">
+                  <a href="{{ articles[prevIndex].url | prepend: site.baseurl }}"><h3 class="contrast">&laquo; {{ articles[prevIndex].title }}</h3></a>
+                  <br><span>{{ articles[prevIndex].date | date: "%B %-d, %Y" }}</span>  <br/>
+                </div>
+                {% endif %}
+            </div>
+            </p>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+    
+    {% include print-footer.html %} {% include footer.html %}
+  </body>
+</html>

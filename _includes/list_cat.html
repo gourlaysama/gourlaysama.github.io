@@ -1,0 +1,20 @@
+{% assign cat = site.categories[include.cat] %}
+{% if cat != nil %}
+<h1 class="content-listing-header sans">{{include.title}}</h1>
+<ul class="content-listing ">
+    {% for post in cat %}      
+        <li class="listing">
+          <hr class="slender">
+          <a href="{{ post.url | prepend: site.baseurl }}"><h3 class="contrast">{{ post.title }}</h3></a>
+          <br><span class="smaller">{{ post.date | date: "%B %-d, %Y" }}</span><span class="smaller listing-tags">
+            {%- if post.tags.length != 0 -%}
+            <a href="{% link tags/index.html %}#tag-{{post.tags[0] | slugify}}">{{post.tags[0]}}</a>
+            {%- assign tags = post.tags | shift %}
+            {%- for tag in tags -%}, <a href="{% link tags/index.html %}#tag-{{tag | slugify}}">{{tag}}</a>{% endfor %}
+            {% endif %}
+          </span>  <br/>
+          <div>{{ post.excerpt }}</div> 
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
