@@ -4,6 +4,7 @@ title:  "Edge Cases"
 date:   2020-04-13 17:04:01
 category: tech
 tags: test1 test2
+published: false
 ---
 Some edge cases and cautionary examples on using Markdown for writing content using this theme. In particular, list syntax can really knot things up.
 <!--more-->
