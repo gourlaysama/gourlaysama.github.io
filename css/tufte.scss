@@ -449,7 +449,8 @@ blockquote .marginnote {
 p,
 footer,
 div.table-wrapper,
-.MJXc-display {
+.MJXc-display,
+.group hr {
   text-align: justify;
   text-justify: inter-word;
   hyphens: auto;
@@ -711,7 +712,8 @@ li.listing h3.new {
   text-transform: uppercase;
   font-style: normal;
 }
-hr.slender {
+hr.slender,
+article hr {
   border: 0;
   height: 1px;
   margin-top: 1.4rem;
@@ -915,16 +917,25 @@ hr.slender {
 .nav-page {
   max-width: 90%;
   padding-top: 2rem;
+  hr {
+    margin-bottom: 3rem;
+  }
 }
 
 .nav-next {
   text-align: right;
   float: right;
   padding-right: 4.5%;
+  h3 {
+    margin-top: 0px;
+  }
 }
 
 .nav-prev {
   padding-left: 4.5%;
+  h3 {
+    margin-top: 0px;
+  }
 }
 
 footer {
@@ -950,4 +961,53 @@ footer {
   padding-left: 0.3rem;
   padding-right: 0.3rem;
   content: "—";
+}
+
+.group ul {
+  padding-left: 1rem;
+
+  li:before {
+    content: "▪";
+    padding-right: 1rem;
+  }
+
+  ul li:before {
+    content: "⬝";
+  }
+}
+
+.console {
+  pre.highlight {
+    width: min-content;
+    padding-left: 1%;
+    margin-left: 1.5%;
+    padding-right: 1%;
+    border-left: 3px solid #111;
+    background-color: #f0f0e2;
+  }
+  
+}
+
+.console .highlight {
+  margin-bottom: 0px;
+}
+
+.console + pre {
+  margin-top: 0px;
+  padding-top: 10px;
+  border-left: 3px solid #111;
+}
+
+.larger {
+  // overflow-x: initial;
+  width: 90%;
+  padding-left: 1%;
+  margin-left: 1.5%;
+}
+
+.welcome {
+  width: 81%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0% 5%;
 }

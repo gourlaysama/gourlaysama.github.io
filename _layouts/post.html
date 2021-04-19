@@ -17,7 +17,6 @@
             {% assign nextIndex = currIndex | plus: 1 %}
             {% assign articleIndexLength = forloop.length | minus: 1 %}
             {% if articleIndexLength != 0 %}
-            <p>
             <div class="nav-page">
             <hr class="slender">
                 {% if currIndex == 0 %}
@@ -41,7 +40,6 @@
                 </div>
                 {% endif %}
             </div>
-            </p>
             {% endif %}
           {% endif %}
         {% endfor %}
