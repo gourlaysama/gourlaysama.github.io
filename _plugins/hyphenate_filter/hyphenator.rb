@@ -26,7 +26,10 @@ module Jekyll
         fragment.css(@selector).each do |el|
           el.traverse do |node|
             if node.name != "code"
-              node.content = hyphenate_text(node.to_str) if node.text?
+              new_str = node.to_str
+              new_str = new_str.gsub(/(\w)…(\w)/, '\1 … \2')
+              new_str = new_str.gsub(/(\W)…(\w)/, '\1… \2')
+              node.content = hyphenate_text(new_str) if node.text?
             end
           end
         end

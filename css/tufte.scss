@@ -42,6 +42,8 @@ body {
 
 html {
   text-align: baseline;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga", "clig", "kern";
   font-size: 11px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -454,6 +456,8 @@ div.table-wrapper,
   text-align: justify;
   text-justify: inter-word;
   hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
   width: 55%;
 }
 
@@ -626,6 +630,7 @@ header > nav a {
   font-family: $sans-font;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  font-feature-settings: "titl", "cpsp", "case";
   color: $contrast-color;
   padding-top: 1.5rem;
   text-decoration: none;
@@ -685,6 +690,7 @@ ul.content-listing li.listing {
 h1.content-listing-header {
   font-style: normal;
   text-transform: uppercase;
+  font-feature-settings: "titl", "cpsp", "case", "kern";
   letter-spacing: 0.2rem;
   font-size: 1.8rem;
 }
@@ -964,15 +970,38 @@ footer {
 }
 
 .group ul {
-  padding-left: 1rem;
-
   li:before {
     content: "▪";
     padding-right: 1rem;
   }
 
-  ul li:before {
-    content: "⬝";
+  ul {
+    padding-left: 2rem;
+    li:before {
+      content: "⬝";
+    }
+  }
+}
+
+.group ol {
+  list-style-type: none;
+  ol {
+    padding-left: 2rem;
+  }
+  counter-reset: li;
+}
+
+.group ol > li {
+  &:before {
+    text-align: center;
+    display: inline-block;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    content: counter(li);
+    counter-increment: li;
+    border-radius: 50%;
+    border: 1px solid #111;
+    margin-right: 1rem;
   }
 }
 
@@ -985,7 +1014,6 @@ footer {
     border-left: 3px solid #111;
     background-color: #f0f0e2;
   }
-  
 }
 
 .console .highlight {
@@ -999,7 +1027,6 @@ footer {
 }
 
 .larger {
-  // overflow-x: initial;
   width: 90%;
   padding-left: 1%;
   margin-left: 1.5%;

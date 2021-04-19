@@ -14,13 +14,13 @@ This is a link to [Github](https://github.com) and to [whatever](http://example.
 
 ### Some article about something H3
 
-Some **white space test**, like *George R.&thinsp;R. Martin*.
+Some efficient **white space test**, like *George R.&thinsp;R. Martin*.
 
 And---and this is obvious---an ellipsis...followed by a five-dollar bill, the range 1970--1999 and the Kylo--Rey relationship (I know, I know). Let's end a sentence with an ellipsis and punctuation...? What about,...before? And followed by a sentence...And then end a paragraph with one...
 
 And a “bunch of quotes” “too” (the proper ones), and let's show the English language’s frakin’ use of contractions, all in the '90s. And now for some emoticons, like for example, 😃, 🤩 and 🍹. And I am 5'&nbsp;11", and roughly at 37 °C. Next step: math symbols, like the fact that 5×10&minus;2=48.
 
-And now for some `inline code` for `T` and [`List[Int]`](https://www.scala-lang.org). And he/she use a slash/solidus/stroke & an ampersand, did some f\*cking sensorship, with a manual side note{% sidenote 1 'The side note, indeed.' %}, and a second one{% sidenote 2 'And *another* one.' %}.
+And now for some `inline code` for `T` and [`List[Int]`](https://www.scala-lang.org). And he/she uses a slash/solidus/stroke & an ampersand, did some f\*cking sensorship, with a manual side note{% sidenote 1 'The side note, indeed.' %}, and a second one{% sidenote 2 'And *another* one.' %}.
 
 {% epigraph 'We can also quote stuff [...], and it works.' 'Me' 'Stuff' %}
 

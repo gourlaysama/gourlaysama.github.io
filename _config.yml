@@ -6,8 +6,15 @@ description: My blog
 name: gourlaysama-blog
 permalink: /:slugified_categories/:short_year/:slug
 timezone: Europe/Paris
-excerpt_separator: <!--more-->  # you can specify your own separator, of course.
-exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'UploadToGithub.Rakefile', 'README.md']
+excerpt_separator: <!--more--> # you can specify your own separator, of course.
+exclude:
+  [
+    "Gemfile",
+    "Gemfile.lock",
+    "Rakefile",
+    "UploadToGithub.Rakefile",
+    "README.md",
+  ]
 post:
   template: _post.txt
   extension: md
