@@ -5,7 +5,8 @@ title: tags
 
 <h1 class="content-listing-header sans">Tags</h1>
 <ul class="content-listing">
-  {% for tag in site.tags %}
+  {% assign tags = site.tags | sort %}
+  {% for tag in tags %}
   <li class="listing">
     <hr class="slender" />
   <h2 id="tag-{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
