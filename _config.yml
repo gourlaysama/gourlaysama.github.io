@@ -12,8 +12,6 @@ exclude:
   [
     "Gemfile",
     "Gemfile.lock",
-    "Rakefile",
-    "UploadToGithub.Rakefile",
     "README.md",
   ]
 post:
@@ -25,3 +23,5 @@ page:
 editor: code
 git:
   branch: local
+kramdown:
+  math_engine: katex

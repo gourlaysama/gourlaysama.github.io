@@ -5,6 +5,9 @@ gem 'rouge'
 gem 'nokogiri'
 gem 'liquid'
 gem 'text-hyphen'
+gem 'kramdown-math-katex'
+gem 'katex'
+gem 'execjs'
 
 group :jekyll_plugins do
     gem 'jekyll-feed'

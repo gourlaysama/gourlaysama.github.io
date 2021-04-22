@@ -452,7 +452,8 @@ p,
 footer,
 div.table-wrapper,
 .MJXc-display,
-.group hr {
+.group hr,
+.katex-display {
   text-align: justify;
   text-justify: inter-word;
   hyphens: auto;
@@ -683,7 +684,7 @@ ul.content-listing li.listing {
   margin-right: auto;
   padding: 0% 5%;
 }
-.full-width article p {
+.full-width article p, .full-width article .katex-display {
   width: 90%;
 }
 
@@ -1042,4 +1043,12 @@ footer {
   margin-left: auto;
   margin-right: auto;
   padding: 0% 5%;
+}
+
+.katex {
+  font-size: 1em;
+}
+
+.katex-display > .katex {
+  font-size: 1.31em;
 }
