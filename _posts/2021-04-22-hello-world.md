@@ -2,8 +2,8 @@
 layout: post
 title: Hello, world
 category: other
+date: 2021-04-22 14:52 +0200
 ---
-
 I'm beginning an attempt at blogging again.
 
 <!--more-->
