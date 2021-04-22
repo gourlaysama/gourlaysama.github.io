@@ -148,7 +148,7 @@ h1 {
 h2 {
   font-style: italic;
   font-weight: 400;
-  margin-top: 1.866666666666667rem;
+  margin-top: 2.8rem;
   margin-bottom: 0;
   font-size: 2.1rem;
   line-height: 0.933333333333333;
@@ -1023,13 +1023,18 @@ footer {
 .console + pre {
   margin-top: 0px;
   padding-top: 10px;
+  padding-bottom: 10px;
   border-left: 3px solid #111;
+  margin-left: 1.5%;
+  padding-left: 1%;
+}
+
+.console-cont pre, .bnote {
+  margin-top: 0px;
 }
 
 .larger {
-  width: 90%;
-  padding-left: 1%;
-  margin-left: 1.5%;
+  width: 90%;  
 }
 
 .welcome {

@@ -6,7 +6,8 @@ description: My blog
 name: gourlaysama-blog
 permalink: /:slugified_categories/:short_year/:slug
 timezone: Europe/Paris
-excerpt_separator: <!--more--> # you can specify your own separator, of course.
+excerpt_separator: <!--more-->
+url: "https://gourlaysama.github.io"
 exclude:
   [
     "Gemfile",
