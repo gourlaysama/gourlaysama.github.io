@@ -22,6 +22,6 @@ post:
 page:
   template: _page.txt
   extension: md
-editor: vim
+editor: code
 git:
   branch: local
