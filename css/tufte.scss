@@ -93,6 +93,13 @@ html {
 a {
   color: $contrast-color;
   text-decoration: none;
+  &:hover {
+    color: $contrast-dim-color;
+  }
+
+  .contrast:hover {
+    color: $contrast-dim-color;
+  }
 }
 
 p > a,
@@ -116,9 +123,17 @@ span > a {
       0.09em 0 $bg-color, -0.09em 0 $bg-color, 0.12em 0 $bg-color,
       -0.12em 0 $bg-color, 0.15em 0 $bg-color, -0.15em 0 $bg-color;
     background-position: 0% 93%, 100% 93%, 0% 93%;
+
+    &:hover {
+      color: $text-dim-color;
+    }
   } @else {
     color: $contrast-color;
     text-decoration: none;
+
+    &:hover {
+      color: $contrast-dim-color;
+    }
   }
 }
 
@@ -669,6 +684,10 @@ ul.footer-links li {
   font-family: $sans-font;
   & a {
     color: $contrast-color;
+
+    &:hover {
+      color: $contrast-dim-color;
+    }
   }
 }
 
@@ -684,7 +703,8 @@ ul.content-listing li.listing {
   margin-right: auto;
   padding: 0% 5%;
 }
-.full-width article p, .full-width article .katex-display {
+.full-width article p,
+.full-width article .katex-display {
   width: 90%;
 }
 
@@ -961,6 +981,10 @@ footer {
     text-shadow: initial;
     background-position: initial;
     text-decoration: none;
+
+    &:hover {
+      color: $contrast-dim-color;
+    }
   }
 }
 
@@ -1013,7 +1037,7 @@ footer {
     margin-left: 1.5%;
     padding-right: 1%;
     border-left: 3px solid #111;
-    background-color: #f0f0e2;
+    background-color: $bg-contrast-color;
   }
 }
 
@@ -1030,12 +1054,13 @@ footer {
   padding-left: 1%;
 }
 
-.console-cont pre, .bnote {
+.console-cont pre,
+.bnote {
   margin-top: 0px;
 }
 
 .larger {
-  width: 90%;  
+  width: 90%;
 }
 
 .welcome {
