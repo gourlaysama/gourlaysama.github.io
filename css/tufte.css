@@ -163,9 +163,15 @@ html { text-align: baseline; text-rendering: optimizeLegibility; font-feature-se
 
 a { color: #a00000; text-decoration: none; }
 
+a:hover { color: #bc4c4c; }
+
+a .contrast:hover { color: #bc4c4c; }
+
 p > a, cite > a, span > a { color: #111; text-decoration: none; background: -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(currentColor, currentColor); background: linear-gradient(#fffff8, #fffff8), linear-gradient(#fffff8, #fffff8), linear-gradient(currentColor, currentColor); -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px; -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px; background-size: 0.05em 1px, 0.05em 1px, 1px 1px; background-repeat: no-repeat, no-repeat, repeat-x; text-shadow: 0.03em 0 #fffff8, -0.03em 0 #fffff8, 0 0.03em #fffff8, 0 -0.03em #fffff8, 0.06em 0 #fffff8, -0.06em 0 #fffff8, 0.09em 0 #fffff8, -0.09em 0 #fffff8, 0.12em 0 #fffff8, -0.12em 0 #fffff8, 0.15em 0 #fffff8, -0.15em 0 #fffff8; background-position: 0% 93%, 100% 93%, 0% 93%; }
 
-body { width: 87.5%; margin-left: auto; margin-right: auto; padding-left: 12.5%; font-family: ETbook, "Chronicle Text G2", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; background-color: #fffff8; color: #111; max-width: 1400px; counter-reset: sidenote-counter; }
+p > a:hover, cite > a:hover, span > a:hover { color: #707070; }
+
+body { width: 87.5%; margin-left: auto; margin-right: auto; font-family: ETbook, "Chronicle Text G2", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; background-color: #fffff8; color: #111; max-width: 1400px; counter-reset: sidenote-counter; }
 
 h1 { font-weight: 400; margin-top: 1.568rem; margin-bottom: 1.568rem; font-size: 2.5rem; line-height: 0.784; }
 
@@ -191,7 +197,7 @@ div.epigraph > blockquote > footer { font-style: normal; width: 45%; padding-lef
 div.epigraph > blockquote > footer > cite { font-style: italic; }
 
 /* end chapter epigraphs styles */
-blockquote p, blockquote footer { width: 45%; padding-left: 2.5%; padding-right: 2.5%; }
+blockquote p, blockquote footer { width: 60%; padding-left: 2.5%; padding-right: 2.5%; }
 
 blockquote footer { font-size: 1.1rem; line-height: 1.78181818; margin-top: 1.78181818rem; margin-bottom: 1.78181818rem; text-align: right; }
 
@@ -258,7 +264,7 @@ blockquote .sidenote, blockquote .marginnote { margin-right: -79%; }
 
 .sidenote:before { content: counter(sidenote-counter) ". "; color: #a00000; top: 0rem; }
 
-p, footer, div.table-wrapper, .MJXc-display, .group hr, .katex-display { text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; -ms-hyphens: auto; width: 55%; }
+p, footer, div.table-wrapper, .MJXc-display, .group hr, .katex-display { text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; -ms-hyphens: auto; width: 65%; }
 
 div.table-wrapper, table { overflow-x: auto; }
 
@@ -266,7 +272,7 @@ div.table-wrapper, table { overflow-x: auto; }
 
 .marginnote code, .sidenote code { font-size: 1rem; }
 
-pre { width: 52.5%; padding-left: 2.5%; overflow-x: auto; }
+pre { width: 60%; padding-left: 2.5%; overflow-x: auto; }
 
 .fullwidth, li.listing div { max-width: 90%; }
 
@@ -307,6 +313,8 @@ ul.footer-links li { display: inline; padding: 0.5rem 0.25rem; }
 .credits { font-family: "Gill Sans", "Gill Sans MT", "Gotham Narrow", "Lato", Calibri, sans-serif; }
 
 .credits a { color: #a00000; }
+
+.credits a:hover { color: #bc4c4c; }
 
 body.full-width, .content-listing, ul.content-listing li.listing { width: 90%; margin-left: auto; margin-right: auto; padding: 0% 5%; }
 
@@ -398,7 +406,11 @@ footer { clear: both; }
 
 .listing-tags a { color: #a00000; text-decoration: none; background: initial; -webkit-background-size: initial; -moz-background-size: initial; background-size: initial; background-repeat: initial; text-shadow: initial; background-position: initial; text-decoration: none; }
 
+.listing-tags a:hover { color: #bc4c4c; }
+
 .listing-tags:before { padding-left: 0.3rem; padding-right: 0.3rem; content: "—"; }
+
+.group ul { padding-left: 2.5%; }
 
 .group ul li:before { content: "▪"; padding-right: 1rem; }
 
