@@ -141,7 +141,6 @@ body {
   width: 87.5%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 12.5%;
   font-family: $body-font;
   background-color: $bg-color;
   color: $text-color;
@@ -235,7 +234,7 @@ div.epigraph > blockquote > footer > cite {
 
 blockquote p,
 blockquote footer {
-  width: 45%;
+  width: 60%;
   padding-left: 2.5%;
   padding-right: 2.5%;
 }
@@ -474,7 +473,7 @@ div.table-wrapper,
   hyphens: auto;
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
-  width: 55%;
+  width: 65%;
 }
 
 div.table-wrapper,
@@ -517,7 +516,7 @@ table {
 } //more .code class removal
 
 pre {
-  width: 52.5%; //, pre code, p pre code are both selectors in tufte.css - they have been removed here to fix alignment issues
+  width: 60%; //, pre code, p pre code are both selectors in tufte.css - they have been removed here to fix alignment issues
   padding-left: 2.5%;
   overflow-x: auto;
 }
@@ -995,6 +994,7 @@ footer {
 }
 
 .group ul {
+  padding-left: 2.5%;
   li:before {
     content: "▪";
     padding-right: 1rem;
