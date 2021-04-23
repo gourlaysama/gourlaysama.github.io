@@ -13,6 +13,7 @@ exclude:
     "Gemfile",
     "Gemfile.lock",
     "README.md",
+    "publish_local.sh"
   ]
 post:
   template: _post.txt
