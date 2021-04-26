@@ -1,49 +1,78 @@
 <!DOCTYPE html>
 <html>
-  {% include head.html %}
-  <body>
-    {% include header.html %}
-    <article class="group">
-      <h1>{{ page.title}}</h1>
-      <p class="subtitle">{{ page.date | date: "%B %-d, %Y" }}</p>
-      {{ content | hyphenate }}
-    </article>
-    
+    {% include head.html %}
+    <body>
+        {% include header.html %}
+        <article class="group">
+            <h1>{{ page.title}}</h1>
+            <p class="subtitle">{{ page.date | date: "%B %-d, %Y" }}
+            {%- if page.tags.length != 0 -%}
+                {%- assign tag0 = page.tags[0] | strip -%}
+                {%- unless tag0 == "" -%}
+                    <span class="listing-tags">
+                        <a href="{% link tags/index.html %}#tag-{{page.tags[0] | slugify}}">{{page.tags[0]}}</a>
+                        {%- assign tags = page.tags | shift %}
+                        {%- for tag in tags -%},
+                            <a href="{% link tags/index.html %}#tag-{{tag | slugify}}">{{tag}}</a>
+                        {% endfor %}
+                    </span>
+                {%- endunless -%}
+            {%- endif -%}</p>
+            {{ content | hyphenate }}
+        </article>
+
         {% assign articles = site.categories[page.category] | reverse %}
         {% for article in articles %}
-          {% if article.title == page.title %}
-            {% assign currIndex = forloop.index0 %}
-            {% assign prevIndex = currIndex | minus: 1 %}
-            {% assign nextIndex = currIndex | plus: 1 %}
-            {% assign articleIndexLength = forloop.length | minus: 1 %}
-            {% if articleIndexLength != 0 %}
-            <div class="nav-page">
-            <hr class="slender">
-                {% if currIndex == 0 %}
-                <div class="nav-next">
-                <a href="{{ articles[nextIndex].url | prepend: site.baseurl }}"><h3 class="contrast">{{ articles[nextIndex].title }} &raquo;</h3></a>
-                <br><span>{{ articles[nextIndex].date | date: "%B %-d, %Y" }}</span>  <br/>
-                </div>
-                {% elsif currIndex < articleIndexLength and currIndex != 0 %}
-                <div class="nav-next">
-                  <a href="{{ articles[nextIndex].url | prepend: site.baseurl }}"><h3 class="contrast">{{ articles[nextIndex].title }} &raquo;</h3></a>
-                  <br><span>{{ articles[nextIndex].date | date: "%B %-d, %Y" }}</span>  <br/>
-                </div>
-                  <div class="nav-prev">
-                    <a href="{{ articles[prevIndex].url | prepend: site.baseurl }}"><h3 class="contrast">&laquo; {{ articles[prevIndex].title }}</h3></a>
-                    <br><span>{{ articles[prevIndex].date | date: "%B %-d, %Y" }}</span>  <br/>
-                  </div>
-                {% elsif currIndex == articleIndexLength %}
-                <div class="nav-prev">
-                  <a href="{{ articles[prevIndex].url | prepend: site.baseurl }}"><h3 class="contrast">&laquo; {{ articles[prevIndex].title }}</h3></a>
-                  <br><span>{{ articles[prevIndex].date | date: "%B %-d, %Y" }}</span>  <br/>
-                </div>
+            {% if article.title == page.title %}
+                {% assign currIndex = forloop.index0 %}
+                {% assign prevIndex = currIndex | minus: 1 %}
+                {% assign nextIndex = currIndex | plus: 1 %}
+                {% assign articleIndexLength = forloop.length | minus: 1 %}
+                {% if articleIndexLength != 0 %}
+                    <div class="nav-page">
+                        <hr class="slender">
+                        {% if currIndex == 0 %}
+                            <div class="nav-next">
+                                <a href="{{ articles[nextIndex].url | prepend: site.baseurl }}">
+                                    <h3 class="contrast">{{ articles[nextIndex].title }}
+                                        &raquo;</h3>
+                                </a>
+                                <br><span>{{ articles[nextIndex].date | date: "%B %-d, %Y" }}</span>
+                                <br/>
+                            </div>
+                        {% elsif currIndex < articleIndexLength and currIndex != 0 %}
+                            <div class="nav-next">
+                                <a href="{{ articles[nextIndex].url | prepend: site.baseurl }}">
+                                    <h3 class="contrast">{{ articles[nextIndex].title }}
+                                        &raquo;</h3>
+                                </a>
+                                <br><span>{{ articles[nextIndex].date | date: "%B %-d, %Y" }}</span>
+                                <br/>
+                            </div>
+                            <div class="nav-prev">
+                                <a href="{{ articles[prevIndex].url | prepend: site.baseurl }}">
+                                    <h3 class="contrast">&laquo;
+                                        {{ articles[prevIndex].title }}</h3>
+                                </a>
+                                <br><span>{{ articles[prevIndex].date | date: "%B %-d, %Y" }}</span>
+                                <br/>
+                            </div>
+                        {% elsif currIndex == articleIndexLength %}
+                            <div class="nav-prev">
+                                <a href="{{ articles[prevIndex].url | prepend: site.baseurl }}">
+                                    <h3 class="contrast">&laquo;
+                                        {{ articles[prevIndex].title }}</h3>
+                                </a>
+                                <br><span>{{ articles[prevIndex].date | date: "%B %-d, %Y" }}</span>
+                                <br/>
+                            </div>
+                        {% endif %}
+                    </div>
                 {% endif %}
-            </div>
             {% endif %}
-          {% endif %}
         {% endfor %}
-    
-    {% include print-footer.html %} {% include footer.html %}
-  </body>
+
+        {% include print-footer.html %}
+        {% include footer.html %}
+    </body>
 </html>
