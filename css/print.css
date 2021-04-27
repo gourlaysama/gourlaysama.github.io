@@ -11,7 +11,7 @@
 
 body { font-size: 12pt; }
 
-html body span.print-footer { font-family: "Gill Sans", "Gill Sans MT", "Gotham Narrow", "Lato", Calibri, sans-serif; font-size: 9pt; margin-top: 22.4pt; padding-top: 4pt; border-top: 1px solid #000; }
+html body span.print-footer { font-family: "Gill Sans", "Gill Sans MT", "Gotham Narrow", Lato, Calibri, sans-serif; font-size: 9pt; margin-top: 22.4pt; padding-top: 4pt; border-top: 1px solid #000; }
 
 thead { display: table-header-group; }
 
