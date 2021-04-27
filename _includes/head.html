@@ -4,12 +4,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  {% if page.title %}<meta property="og:title" content="{{ page.title }}">{% endif %}
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  {% if page.excerpt %}<meta property="og:description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}">{% endif %}
+  <meta property="og:locale" content="en_US">
+  {% if page.og_type %}<meta property="og:type" content="{{ page.og_type }}">{% endif %}
 
-  <!-- Google Fonts loaded here depending on setting in _data/options.yml true loads font, blank does not-->
-  {% if site.data.options.lato_font_load %}
-    <link href='//fonts.googleapis.com/css?family=Lato:400,400italic' rel='stylesheet' type='text/css'>
-  {% endif %}
+  <link rel="preload" href="/fonts/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff" as="font" type="font/woff" crossorigin="anonymous">
+  <link rel="preload" href="/fonts/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff" as="font" type="font/woff" crossorigin="anonymous">
+  <link rel="preload" href="/fonts/Lato/LatoLatin-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
   {% if page.katex %}
     <!-- KaTeX -->
@@ -20,6 +23,7 @@
   <!-- <link rel="stylesheet" type="text/css" href="{{ "/css/print.css" | prepend: site.baseurl }}" media="print"> -->
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
 </head>

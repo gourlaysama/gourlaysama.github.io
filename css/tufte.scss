@@ -571,6 +571,7 @@ label.margin-toggle:not(.sidenote-number) {
     margin: 1rem 2.5%;
     vertical-align: baseline;
     position: relative;
+    margin-right: 15%;
   }
   label {
     cursor: pointer;
@@ -1038,6 +1039,13 @@ footer {
     padding-right: 1%;
     border-left: 3px solid #111;
     background-color: $bg-contrast-color;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .console pre.highlight {
+    width: initial;
+    max-width: min-content;
   }
 }
 
