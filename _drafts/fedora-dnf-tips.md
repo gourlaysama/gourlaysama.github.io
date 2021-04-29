@@ -282,7 +282,7 @@ dnf provides bzcat
 But the path doesn't actually have to exist locally at all. For example, when installing a
 package:
 
-{% marginnote mm-dnf-path 'Note that it needs to be an *absolute* path here, otherwise you should use a wildcard (see below).' %}
+{% marginnote mm-dnf-path 'Note that it needs to be an *absolute* path here, otherwise you should use a wildcard.' %}
 ```sh
 sudo dnf install /usr/bin/gvim
 ```
@@ -375,7 +375,7 @@ Provide    : libbz2.so.1()(64bit)
 
 When manually compiling programs, build systems often use  `pkgconfig` to locate
 dependencies. The same dependency names can be used with DNF, regardless of the
-actual name it is packaged as:
+actual name of the package:
 
 ```sh
 # before compiling a program that requires dbus
@@ -417,6 +417,15 @@ Thus you can list all fonts packaged in Fedora with:
 
 ```sh
 dnf provides 'font(*)' | grep Provide | sort -u
+```
+
+### DNF commands
+
+You sometimes see DNF commands that are not available on a system by default—in blog
+posts for example. Those can be installed by DNF with:
+
+```sh
+sudo dnf install 'dnf-command(torproxy)'
 ```
 
 ### Libraries from various ecosystems
