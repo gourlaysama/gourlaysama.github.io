@@ -3,6 +3,7 @@ layout: post
 title: Going further with DNF in Fedora
 category: tech
 tags: Fedora
+date: 2021-04-29 15:39 +0200
 ---
 Fedora's DNF package manager is easy to use for everyday tasks, but it's also easy to miss
 some very useful lesser known features.
