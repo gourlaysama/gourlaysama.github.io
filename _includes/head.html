@@ -8,6 +8,7 @@
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   {% if page.excerpt %}<meta property="og:description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}">{% endif %}
   <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="{{ "/assets/img/card.png" | prepend: site.baseurl }}">
   {% if page.og_type %}<meta property="og:type" content="{{ page.og_type }}">{% endif %}
 
   <link rel="preload" href="/fonts/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff" as="font" type="font/woff" crossorigin="anonymous">
