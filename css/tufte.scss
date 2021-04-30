@@ -127,9 +127,11 @@ span > a {
     &:hover {
       color: $text-dim-color;
     }
+    &::selection {
+      text-shadow: none;
+      background-color: #fddfdf;
+    }
   } @else {
-    color: $contrast-color;
-    text-decoration: none;
 
     &:hover {
       color: $contrast-dim-color;
