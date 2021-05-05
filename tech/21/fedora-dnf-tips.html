@@ -75,7 +75,9 @@
 </header>
         <article class="group">
             <h1>Going further with DNF in Fedora</h1>
-            <p class="subtitle">April 29, 2021<span class="listing-tags">
+            <p class="subtitle">April 29, 2021,<span class="last_updated">
+                updated May 5, 2021
+            </span><span class="listing-tags">
                         <a href="/tags/#tag-fedora">Fedora</a>
                     </span></p>
             <p>Fedo­ra’s DNF pack­age man­ager is easy to use for every­day tasks, but it’s also easy to miss
@@ -162,14 +164,17 @@ Downgrade  8 Packages
 
 <h3 id="using-the-archive-repository">Using the archive repository</h3>
 
+<p class="info"><strong>Edit</strong> (May 5, 2021): The repos­i­tory is now enabled by default when installed; the sec­tion
+was changed to reflect this.</p>
+
 <p>For­tu­nately Fedora includes a repos­i­tory that con­tains all pack­ages that ever reached the
-<code class="language-plaintext highlighter-rouge">updates</code> repos­i­to­ry. After installing it:</p>
+<code class="language-plaintext highlighter-rouge">updates</code> repos­i­to­ry. After installing it, and set­ting it as dis­abled by default:<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"><span class="sidenote">since <a href="https://bodhi.fedoraproject.org/updates/FEDORA-2021-6348d6bf2c">this update</a> all ver­sions of Fedora (ex­cept rawhide) have it enabled by default. The ratio­nal is that it is nor­mally only installed on edi­tions that actu­ally need it (like <a href="https://fedoramagazine.org/what-is-silverblue/">Fedora Silverblue</a>). </span></p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nb">install </span>fedora-repos-archive
+<span class="nb">sudo </span>dnf config-manager <span class="nt">--set-disabled</span> updates-archive
 </code></pre></div></div>
 
-<p>It becomes avail­able for use (but dis­abled by default), and con­tains every­thing you might
-expect:</p>
+<p>It becomes avail­able for use, and con­tains every­thing you might expect:</p>
 
 <div class="language-sh console highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dnf list <span class="nt">--showduplicates</span> <span class="nt">--enablerepo</span><span class="o">=</span>updates-archive systemd.x86_64
 </code></pre></div></div>
@@ -245,9 +250,14 @@ Downgrade  6 Packages
 </code></pre>
 
 <p>Note that the <code class="language-plaintext highlighter-rouge">updates-archive</code> repos­i­tory should prob­a­bly be kept dis­abled by default, because
-query­ing it is sig­nif­i­cantly slower than other repositories<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle"><span class="sidenote">Because it has a lot
+query­ing it is sig­nif­i­cantly slower than other repositories<label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle"><span class="sidenote">Because it has a lot
 more meta­data than nor­mal: it only ever keeps grow­ing in size, while the <code class="language-plaintext highlighter-rouge">updates</code> repos­i­tory is
-cleaned of old pack­ages to keep it fast. </span>.</p>
+cleaned of old pack­ages to keep it fast. </span>. If you don’t mind the meta­data down­load times, you
+can remove the <code class="language-plaintext highlighter-rouge">--enable-repo</code> argu­ments above after enabling the repos­i­tory
+with:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf config-manager <span class="nt">--set-enabled</span> updates-archive
+</code></pre></div></div>
 
 <h3 id="locking-a-package-in-place">Locking a package in place</h3>
 
@@ -307,7 +317,7 @@ Matched from:
 Filename    : /etc/vimrc
 </code></pre>
 
-<p>As a spe­cial con­ve­nience, <code class="language-plaintext highlighter-rouge">dnf provide</code> will prefix<label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle"><span class="sidenote">this only works with <code class="language-plaintext highlighter-rouge">provide</code>! </span>
+<p>As a spe­cial con­ve­nience, <code class="language-plaintext highlighter-rouge">dnf provide</code> will prefix<label for="4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="4" class="margin-toggle"><span class="sidenote">this only works with <code class="language-plaintext highlighter-rouge">provide</code>! </span>
  the search term with <code class="language-plaintext highlighter-rouge">/usr/bin/</code> if there is no match (and then <code class="language-plaintext highlighter-rouge">/usr/sbin</code>), so the
 fol­low­ing will work:</p>
 

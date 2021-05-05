@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://gourlaysama.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://gourlaysama.github.io/" rel="alternate" type="text/html" /><updated>2021-04-30T13:21:07+02:00</updated><id>https://gourlaysama.github.io/feed.xml</id><title type="html">Gourlaysama’s blog</title><subtitle>My blog</subtitle><author><name>Antoine Gourlay</name></author><entry><title type="html">Going further with DNF in Fedora</title><link href="https://gourlaysama.github.io/tech/21/fedora-dnf-tips" rel="alternate" type="text/html" title="Going further with DNF in Fedora" /><published>2021-04-29T15:39:00+02:00</published><updated>2021-04-29T15:39:00+02:00</updated><id>https://gourlaysama.github.io/tech/21/fedora-dnf-tips</id><content type="html" xml:base="https://gourlaysama.github.io/tech/21/fedora-dnf-tips">&lt;p&gt;Fedora’s DNF package manager is easy to use for everyday tasks, but it’s also easy to miss
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://gourlaysama.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://gourlaysama.github.io/" rel="alternate" type="text/html" /><updated>2021-05-05T10:51:19+02:00</updated><id>https://gourlaysama.github.io/feed.xml</id><title type="html">Gourlaysama’s blog</title><subtitle>My blog</subtitle><author><name>Antoine Gourlay</name></author><entry><title type="html">Going further with DNF in Fedora</title><link href="https://gourlaysama.github.io/tech/21/fedora-dnf-tips" rel="alternate" type="text/html" title="Going further with DNF in Fedora" /><published>2021-04-29T15:39:00+02:00</published><updated>2021-04-29T15:39:00+02:00</updated><id>https://gourlaysama.github.io/tech/21/fedora-dnf-tips</id><content type="html" xml:base="https://gourlaysama.github.io/tech/21/fedora-dnf-tips">&lt;p&gt;Fedora’s DNF package manager is easy to use for everyday tasks, but it’s also easy to miss
 some very useful lesser known features.
 &lt;!--more--&gt;
 This article will look at how to accomplish more with the typical DNF commands you already use.&lt;/p&gt;
@@ -82,14 +82,17 @@ Downgrade  8 Packages
 
 &lt;h3 id=&quot;using-the-archive-repository&quot;&gt;Using the archive repository&lt;/h3&gt;
 
+&lt;p class=&quot;info&quot;&gt;&lt;strong&gt;Edit&lt;/strong&gt; (May 5, 2021): The repository is now enabled by default when installed; the section
+was changed to reflect this.&lt;/p&gt;
+
 &lt;p&gt;Fortunately Fedora includes a repository that contains all packages that ever reached the
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updates&lt;/code&gt; repository. After installing it:&lt;/p&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updates&lt;/code&gt; repository. After installing it, and setting it as disabled by default:&lt;label for=&quot;2&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;2&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;since &lt;a href=&quot;https://bodhi.fedoraproject.org/updates/FEDORA-2021-6348d6bf2c&quot;&gt;this update&lt;/a&gt; all versions of Fedora (except rawhide) have it enabled by default. The rational is that it is normally only installed on editions that actually need it (like &lt;a href=&quot;https://fedoramagazine.org/what-is-silverblue/&quot;&gt;Fedora Silverblue&lt;/a&gt;). &lt;/span&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;fedora-repos-archive
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf config-manager &lt;span class=&quot;nt&quot;&gt;--set-disabled&lt;/span&gt; updates-archive
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;It becomes available for use (but disabled by default), and contains everything you might
-expect:&lt;/p&gt;
+&lt;p&gt;It becomes available for use, and contains everything you might expect:&lt;/p&gt;
 
 &lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf list &lt;span class=&quot;nt&quot;&gt;--showduplicates&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--enablerepo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;updates-archive systemd.x86_64
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -165,9 +168,14 @@ Downgrade  6 Packages
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Note that the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updates-archive&lt;/code&gt; repository should probably be kept disabled by default, because
-querying it is significantly slower than other repositories&lt;label for=&quot;2&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;2&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Because it has a lot
+querying it is significantly slower than other repositories&lt;label for=&quot;3&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;3&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Because it has a lot
 more metadata than normal: it only ever keeps growing in size, while the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updates&lt;/code&gt; repository is
-cleaned of old packages to keep it fast. &lt;/span&gt;.&lt;/p&gt;
+cleaned of old packages to keep it fast. &lt;/span&gt;. If you don’t mind the metadata download times, you
+can remove the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--enable-repo&lt;/code&gt; arguments above after enabling the repository
+with:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf config-manager &lt;span class=&quot;nt&quot;&gt;--set-enabled&lt;/span&gt; updates-archive
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;locking-a-package-in-place&quot;&gt;Locking a package in place&lt;/h3&gt;
 
@@ -227,7 +235,7 @@ Matched from:
 Filename    : /etc/vimrc
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;As a special convenience, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dnf provide&lt;/code&gt; will prefix&lt;label for=&quot;3&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;3&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;this only works with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;provide&lt;/code&gt;! &lt;/span&gt;
+&lt;p&gt;As a special convenience, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dnf provide&lt;/code&gt; will prefix&lt;label for=&quot;4&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;4&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;this only works with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;provide&lt;/code&gt;! &lt;/span&gt;
  the search term with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/bin/&lt;/code&gt; if there is no match (and then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/sbin&lt;/code&gt;), so the
 following will work:&lt;/p&gt;
 
