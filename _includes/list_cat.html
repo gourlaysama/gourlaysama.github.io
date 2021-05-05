@@ -8,7 +8,12 @@
                 <a href="{{ post.url | prepend: site.baseurl }}">
                     <h3 class="contrast">{{ post.title }}</h3>
                 </a>
-                <br><span class="smaller">{{ post.date | date: "%B %-d, %Y" }}</span>
+                <br><span class="smaller">{{ post.date | date: "%B %-d, %Y" }}
+                    {%- if post.updated -%}
+                        ,<span class="last_updated">updated {{ post.updated | date: "%B %-d, %Y" }}
+                        </span>
+                    {%- endif -%}
+                </span>
                 {%- if post.tags.length != 0 -%}
                     {%- assign tag0 = post.tags[0] | strip -%}
                     {%- unless tag0 == "" -%}

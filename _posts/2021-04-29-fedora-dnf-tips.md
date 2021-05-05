@@ -4,6 +4,7 @@ title: Going further with DNF in Fedora
 category: tech
 tags: Fedora
 date: 2021-04-29 15:39 +0200
+updated: 2021-05-05 10:34 +0200
 ---
 Fedora's DNF package manager is easy to use for everyday tasks, but it's also easy to miss
 some very useful lesser known features.
@@ -100,7 +101,7 @@ That usually isn't what you want when trying to downgrade a recently updated pac
 
 ### Using the archive repository
 
-**Edit** (5 May 2021): The repository is now enabled by default when installed; the section
+**Edit** (May 5, 2021): The repository is now enabled by default when installed; the section
 was changed to reflect this.
 {: .info}
 
