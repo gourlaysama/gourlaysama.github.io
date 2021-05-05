@@ -100,15 +100,19 @@ That usually isn't what you want when trying to downgrade a recently updated pac
 
 ### Using the archive repository
 
+**Edit** (5 May 2021): The repository is now enabled by default when installed; the section
+was changed to reflect this.
+{: .info}
+
 Fortunately Fedora includes a repository that contains all packages that ever reached the
-`updates` repository. After installing it:
+`updates` repository. After installing it, and setting it as disabled by default:{% sidenote 2 'since [this update][bodhi-repo-update] all versions of Fedora (except rawhide) have it enabled by default. The rational is that it is normally only installed on editions that actually need it (like [Fedora Silverblue][silverblue]).' %}
 
 ```sh
 sudo dnf install fedora-repos-archive
+sudo dnf config-manager --set-disabled updates-archive
 ```
 
-It becomes available for use (but disabled by default), and contains everything you might
-expect:
+It becomes available for use, and contains everything you might expect:
 
 ```sh
 dnf list --showduplicates --enablerepo=updates-archive systemd.x86_64
@@ -200,9 +204,15 @@ Downgrade  6 Packages
 {: .larger}
 
 Note that the `updates-archive` repository should probably be kept disabled by default, because
-querying it is significantly slower than other repositories{% sidenote 2 'Because it has a lot
+querying it is significantly slower than other repositories{% sidenote 3 'Because it has a lot
 more metadata than normal: it only ever keeps growing in size, while the `updates` repository is
-cleaned of old packages to keep it fast.' %}.
+cleaned of old packages to keep it fast.' %}. If you don't mind the metadata download times, you
+can remove the `--enable-repo` arguments above after enabling the repository
+with:
+
+```sh
+sudo dnf config-manager --set-enabled updates-archive
+```
 
 ### Locking a package in place
 
@@ -272,7 +282,7 @@ Filename    : /etc/vimrc
 ```
 {: .larger}
 
-As a special convenience, `dnf provide` will prefix{% sidenote 3 'this only works with `provide`!' %}
+As a special convenience, `dnf provide` will prefix{% sidenote 4 'this only works with `provide`!' %}
  the search term with `/usr/bin/` if there is no match (and then `/usr/sbin`), so the
 following will work:
 
@@ -499,3 +509,5 @@ For a more complete tour of DNF see the [DNF documentation][dnf] and the [Core D
 
 [dnf]: https://dnf.readthedocs.io/en/latest/
 [dnfplugins]: https://dnf-plugins-core.readthedocs.io/en/latest/index.html
+[bodhi-repo-update]: https://bodhi.fedoraproject.org/updates/FEDORA-2021-6348d6bf2c
+[silverblue]: https://fedoramagazine.org/what-is-silverblue/
