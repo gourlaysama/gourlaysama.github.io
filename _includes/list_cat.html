@@ -1,5 +1,8 @@
 {% assign cat = site.categories[include.cat] %}
 {% if cat != nil %}
+    {%- unless page.is_root_page -%}
+        <p class="cat-feed-link"><a href="/feed/{{ include.cat }}.xml" | prepend: site.baseurl }}"><span class="icon-rss2"></span></a></p>
+    {%- endunless -%}
     <h1 class="content-listing-header sans">{{include.title}}</h1>
     <ul class="content-listing ">
         {% for post in cat %}

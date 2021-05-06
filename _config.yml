@@ -26,3 +26,7 @@ git:
   branch: local
 kramdown:
   math_engine: katex
+feed:
+  categories:
+    - tech
+    - others

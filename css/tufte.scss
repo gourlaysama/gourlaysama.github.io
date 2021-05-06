@@ -971,7 +971,7 @@ footer {
   clear: both;
 }
 
-.listing-tags {
+.listing-tags, .cat-feed-link {
   a {
     color: $contrast-color;
     text-decoration: none;
@@ -1099,4 +1099,8 @@ footer {
 .last_updated {
   padding-left: 0.2rem;
   color: $text-dim-color;
+}
+
+.cat-feed-link a {
+  float: right;
 }
