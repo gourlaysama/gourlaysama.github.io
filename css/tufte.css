@@ -272,7 +272,7 @@ p, footer, div.table-wrapper, .MJXc-display, .group hr, .katex-display { text-al
 
 div.table-wrapper, table { overflow-x: auto; }
 
-@media screen and (max-width: 760px) { p, footer { width: 90%; } pre code { width: 87.5%; } ul { width: 85%; } figure { max-width: 90%; } figcaption, figure.fullwidth figcaption { margin-right: 0%; max-width: none; } blockquote p, blockquote footer, div.epigraph > blockquote > footer, .MJXc-display { width: 80%; padding-left: 5%; padding-right: 5%; } }
+@media screen and (max-width: 760px) { p, footer, .links hr { width: 90%; } pre code { width: 87.5%; } ul { width: 85%; } figure { max-width: 90%; } figcaption, figure.fullwidth figcaption { margin-right: 0%; max-width: none; } blockquote p, blockquote footer, div.epigraph > blockquote > footer, .MJXc-display { width: 80%; padding-left: 5%; padding-right: 5%; } }
 
 .marginnote code, .sidenote code { font-size: 1rem; }
 
@@ -408,9 +408,9 @@ hr.slender, article hr { border: 0; height: 1px; margin-top: 1.4rem; margin-bott
 
 footer { clear: both; }
 
-.listing-tags a { color: #a00000; text-decoration: none; background: initial; -webkit-background-size: initial; -moz-background-size: initial; background-size: initial; background-repeat: initial; text-shadow: initial; background-position: initial; text-decoration: none; }
+.listing-tags a, .cat-feed-link a, .listing-links a { color: #a00000; text-decoration: none; background: initial; -webkit-background-size: initial; -moz-background-size: initial; background-size: initial; background-repeat: initial; text-shadow: initial; background-position: initial; text-decoration: none; }
 
-.listing-tags a:hover { color: #bc4c4c; }
+.listing-tags a:hover, .cat-feed-link a:hover, .listing-links a:hover { color: #bc4c4c; }
 
 .listing-tags:before { padding-left: 0.3rem; padding-right: 0.3rem; content: "—"; }
 
@@ -449,5 +449,11 @@ footer { clear: both; }
 .info { background-color: #f0f0e2; width: 60%; margin-left: 1.5%; padding-left: 1%; margin-right: 2.5%; }
 
 .last_updated { padding-left: 0.2rem; color: #707070; }
+
+.cat-feed-link a { float: right; }
+
+hr.fleuron { border: 0; height: 1px; margin-top: 1.4rem; margin-bottom: 3.4rem; text-align: center; color: #111; font-size: 1.6rem; }
+
+hr.fleuron:after { content: "❦"; }
 
 /*# sourceMappingURL=tufte.css.map */
