@@ -8,13 +8,18 @@
 		      <a href="{{site.baseurl}}/">Blog</a>
 	{% endif %}
 	{% for node in site.pages %}
-		{% unless node.nav_exclude %}
+		{% if node.nav_include %}
 		    {% if page.url == node.url %}
 		      <a class="active" href="{{node.url | prepend: site.baseurl}}" class="active">{{node.title}}</a>
 		    {% else %}
 		      <a href="{{node.url | prepend: site.baseurl}}">{{node.title}}</a>
 		    {% endif %}
-	    {% endunless %}
+	    {% endif %}
   	{% endfor %}
+	{% if page.title == "tags" %}
+		      <a class="active" href="{{ "/tags/" | prepend: site.baseurl}}" class="active">Tags</a>
+	{% else %}
+		      <a href="{{ "/tags/" | prepend: site.baseurl}}">Tags</a>
+	{% endif %}
 	</nav>
 </header>
