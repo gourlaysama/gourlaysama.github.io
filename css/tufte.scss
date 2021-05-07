@@ -485,7 +485,8 @@ table {
 
 @media screen and (max-width: 760px) {
   p,
-  footer {
+  footer,
+  .links hr {
     width: 90%;
   }
   pre code {
@@ -971,7 +972,7 @@ footer {
   clear: both;
 }
 
-.listing-tags, .cat-feed-link {
+.listing-tags, .cat-feed-link, .listing-links {
   a {
     color: $contrast-color;
     text-decoration: none;
@@ -1103,4 +1104,17 @@ footer {
 
 .cat-feed-link a {
   float: right;
+}
+
+hr.fleuron {
+  border: 0;
+  height: 1px;
+  margin-top: 1.4rem;
+  margin-bottom: 3.4rem;
+  text-align: center;
+  color: $text-color;
+  font-size: 1.6rem;
+  &:after {
+    content: "❦";
+  }
 }

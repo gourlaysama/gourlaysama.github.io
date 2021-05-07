@@ -5,6 +5,9 @@ category: tech
 tags: Fedora
 date: 2021-04-29 15:39 +0200
 updated: 2021-05-05 10:34 +0200
+links:
+ - name: Reddit
+   url: https://www.reddit.com/r/Fedora/comments/n14n7e/going_further_with_dnf_in_fedora/
 ---
 Fedora's DNF package manager is easy to use for everyday tasks, but it's also easy to miss
 some very useful lesser known features.

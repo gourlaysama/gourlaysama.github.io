@@ -29,6 +29,25 @@ og_type: article
             {{ content | hyphenate }}
         </article>
 
+        {%- if page.links -%}
+        <div class="links group">
+        <hr class="fleuron">
+        <p>
+            Comments on 
+            {%- if page.links.length != 0 -%}
+                {%- assign link0 = page.links[0] -%}
+                    <span class="listing-links">
+                        <a href="{{ link0.url }}">{{ link0.name }}</a>
+                        {%- assign links = page.links | shift %}
+                        {%- for linki in links -%},
+                            <a href="{{ linki.url }}">{{ linki.name }}</a>
+                        {%- endfor -%}
+                    </span>.
+            {%- endif -%}
+        </p>
+        </div>
+        {%- endif -%}
+
         {% assign articles = site.categories[page.category] | reverse %}
         {% for article in articles %}
             {% if article.title == page.title %}
