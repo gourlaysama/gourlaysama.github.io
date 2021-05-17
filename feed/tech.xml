@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://gourlaysama.github.io/feed/tech.xml" rel="self" type="application/atom+xml" /><link href="https://gourlaysama.github.io/" rel="alternate" type="text/html" /><updated>2021-05-07T11:36:10+02:00</updated><id>https://gourlaysama.github.io/feed/tech.xml</id><title type="html">Gourlaysama’s blog | Tech</title><subtitle>My blog</subtitle><author><name>Antoine Gourlay</name></author><entry><title type="html">Going further with DNF in Fedora</title><link href="https://gourlaysama.github.io/tech/21/fedora-dnf-tips" rel="alternate" type="text/html" title="Going further with DNF in Fedora" /><published>2021-04-29T15:39:00+02:00</published><updated>2021-04-29T15:39:00+02:00</updated><id>https://gourlaysama.github.io/tech/21/fedora-dnf-tips</id><content type="html" xml:base="https://gourlaysama.github.io/tech/21/fedora-dnf-tips">&lt;p&gt;Fedora’s DNF package manager is easy to use for everyday tasks, but it’s also easy to miss
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://gourlaysama.github.io/feed/tech.xml" rel="self" type="application/atom+xml" /><link href="https://gourlaysama.github.io/" rel="alternate" type="text/html" /><updated>2021-05-17T12:05:05+02:00</updated><id>https://gourlaysama.github.io/feed/tech.xml</id><title type="html">Gourlaysama’s blog | Tech</title><subtitle>My blog</subtitle><author><name>Antoine Gourlay</name></author><entry><title type="html">Going further with DNF in Fedora</title><link href="https://gourlaysama.github.io/tech/21/fedora-dnf-tips" rel="alternate" type="text/html" title="Going further with DNF in Fedora" /><published>2021-04-29T15:39:00+02:00</published><updated>2021-04-29T15:39:00+02:00</updated><id>https://gourlaysama.github.io/tech/21/fedora-dnf-tips</id><content type="html" xml:base="https://gourlaysama.github.io/tech/21/fedora-dnf-tips">&lt;p&gt;Fedora’s DNF package manager is easy to use for everyday tasks, but it’s also easy to miss
 some very useful lesser known features.
 &lt;!--more--&gt;
 This article will look at how to accomplish more with the typical DNF commands you already use.&lt;/p&gt;
@@ -12,7 +12,7 @@ need information from a repository to work.&lt;/p&gt;
 
 &lt;p&gt;You can run with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-C/--cacheonly&lt;/code&gt; option to skip the network:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; list installed &lt;span class=&quot;s1&quot;&gt;'gtk*'&lt;/span&gt;
+&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; list installed &lt;span class=&quot;s1&quot;&gt;&apos;gtk*&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Installed Packages
@@ -186,12 +186,12 @@ the time.&lt;/p&gt;
 though you might have to install it first:&lt;/p&gt;
 
 &lt;p&gt;&lt;label for=&quot;mm-lock&quot; class=&quot;margin-toggle&quot;&gt; ⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;mm-lock&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;Yes, this can be used to locate and install DNF commands, see below. &lt;/span&gt;&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'dnf-command(versionlock)'&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;dnf-command(versionlock)&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Then it can be used to lock packages in place:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; versionlock add &lt;span class=&quot;s1&quot;&gt;'vim*'&lt;/span&gt;
+&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; versionlock add &lt;span class=&quot;s1&quot;&gt;&apos;vim*&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-none&quot;&gt;Adding versionlock on: vim-minimal-2:8.2.2735-1.fc33.*
@@ -204,12 +204,12 @@ Adding versionlock on: vim-enhanced-2:8.2.2735-1.fc33.*
 
 &lt;p&gt;You can for example use it to lock a package to minor updates:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; versionlock add &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'firefox-88.*'&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; versionlock add &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;firefox-88.*&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Or on the contrary exclude minor updates and wait for the next major one:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; versionlock exclude &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'firefox-88.*'&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; versionlock exclude &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;firefox-88.*&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;This can be used to include or exclude packages in a more precise way, compared to adding
@@ -251,7 +251,7 @@ package:&lt;/p&gt;
 
 &lt;p&gt;Wildcards can also be used:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf provides &lt;span class=&quot;s1&quot;&gt;'*/libbz2.so*'&lt;/span&gt;
+&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf provides &lt;span class=&quot;s1&quot;&gt;&apos;*/libbz2.so*&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Last metadata expiration check: 1 day, 18:45:49 ago on Sat 17 Apr 2021 07:43:37 PM CEST.
@@ -282,8 +282,8 @@ Filename    : /usr/lib64/libbz2.so.1.0.8
 
 &lt;p&gt;&lt;label for=&quot;mm-reinstall-config&quot; class=&quot;margin-toggle&quot;&gt; ⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;mm-reinstall-config&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;Note that this will not work for most configuration files in
 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc&lt;/code&gt; since packages are usually instructed to leave local configuration changes alone. &lt;/span&gt;&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf reinstall &lt;span class=&quot;s1&quot;&gt;'/usr/share/themes/*'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf reinstall &lt;span class=&quot;s1&quot;&gt;'/boot/*'&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf reinstall &lt;span class=&quot;s1&quot;&gt;&apos;/usr/share/themes/*&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf reinstall &lt;span class=&quot;s1&quot;&gt;&apos;/boot/*&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;rich-dependencies&quot;&gt;Rich dependencies&lt;/h2&gt;
@@ -301,7 +301,7 @@ about what becomes available once the package is installed.&lt;/p&gt;
 
 &lt;p&gt;Can be diagnosed with:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf provides &lt;span class=&quot;s1&quot;&gt;'libbz2.so.*'&lt;/span&gt;
+&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf provides &lt;span class=&quot;s1&quot;&gt;&apos;libbz2.so.*&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Last metadata expiration check: 2:03:46 ago on Tue Apr 20 08:19:21 2021.
@@ -328,7 +328,7 @@ dependencies. The same dependency names can be used with DNF, regardless of the
 actual name of the package:&lt;/p&gt;
 
 &lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# before compiling a program that requires dbus&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'pkgconfig(dbus-1)'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pkgconfig(dbus-1)&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Dependencies resolved.
@@ -360,7 +360,7 @@ Install  6 Packages
 
 &lt;p&gt;Thus you can list all fonts packaged in Fedora with:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf provides &lt;span class=&quot;s1&quot;&gt;'font(*)'&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;Provide | &lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf provides &lt;span class=&quot;s1&quot;&gt;&apos;font(*)&apos;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;Provide | &lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;dnf-commands&quot;&gt;DNF commands&lt;/h3&gt;
@@ -368,7 +368,7 @@ Install  6 Packages
 &lt;p&gt;You sometimes see DNF commands that are not available on a system by default—in blog
 posts for example. Those can be installed by DNF with:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'dnf-command(torproxy)'&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;dnf-command(torproxy)&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;libraries-from-various-ecosystems&quot;&gt;Libraries from various ecosystems&lt;/h3&gt;
@@ -377,10 +377,10 @@ posts for example. Those can be installed by DNF with:&lt;/p&gt;
 environment provided by Fedora. The naming of packages is usually consistent enough that
 you can guess where to find something, but you can also use the following:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'rubygem(bundler)'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'perl(Socket)'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'python3dist(httplib2)'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'ocaml(Rope)'&lt;/span&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;rubygem(bundler)&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;perl(Socket)&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;python3dist(httplib2)&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;ocaml(Rope)&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;mime-handlers&quot;&gt;MIME handlers&lt;/h3&gt;
@@ -395,7 +395,7 @@ file &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; &lt;span class=&quot;nt&qu
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;div class=&quot;language-sh console console-cont highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# how can I open it?&lt;/span&gt;
-dnf provides &lt;span class=&quot;s1&quot;&gt;'mimehandler(application/vnd.ms-powerpoint)'&lt;/span&gt;
+dnf provides &lt;span class=&quot;s1&quot;&gt;&apos;mimehandler(application/vnd.ms-powerpoint)&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;calligra-okular-odpgenerator-3.2.1-4.fc33.i686 : OpenDocument presenter support for okular
