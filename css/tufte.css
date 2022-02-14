@@ -306,7 +306,7 @@ nav.group a.active:after { content: "\000a0\0003e"; }
 
 header > nav a { font-size: 1.2rem; font-family: "Gill Sans", "Gill Sans MT", "Gotham Narrow", Lato, Calibri, sans-serif; letter-spacing: 0.15em; text-transform: uppercase; font-feature-settings: "titl", "cpsp", "case"; color: #a00000; padding-top: 1.5rem; text-decoration: none; display: inline-block; float: left; margin-top: 0; margin-bottom: 0; padding-right: 2rem; vertical-align: baseline; }
 
-header > nav a img { height: 5rem; position: relative; max-width: 100%; top: -1.5rem; }
+header > nav a img { height: 5rem; width: auto; position: relative; max-width: 100%; top: -1.5rem; }
 
 ul.footer-links, .credits { list-style: none; text-align: center; margin: 0 auto; }
 
@@ -407,6 +407,8 @@ hr.slender, article hr { border: 0; height: 1px; margin-top: 1.4rem; margin-bott
 .nav-prev h3 { margin-top: 0px; }
 
 footer { clear: both; }
+
+.footer-top { float: right; padding-right: 9.5%; font-size: 1.2rem; text-align: center; }
 
 .listing-tags a, .cat-feed-link a, .listing-links a { color: #a00000; text-decoration: none; background: initial; -webkit-background-size: initial; -moz-background-size: initial; background-size: initial; background-repeat: initial; text-shadow: initial; background-position: initial; text-decoration: none; }
 

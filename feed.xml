@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://gourlaysama.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://gourlaysama.github.io/" rel="alternate" type="text/html" /><updated>2021-05-17T12:05:05+02:00</updated><id>https://gourlaysama.github.io/feed.xml</id><title type="html">Gourlaysama’s blog</title><subtitle>My blog</subtitle><author><name>Antoine Gourlay</name></author><entry><title type="html">Going further with DNF in Fedora</title><link href="https://gourlaysama.github.io/tech/21/fedora-dnf-tips" rel="alternate" type="text/html" title="Going further with DNF in Fedora" /><published>2021-04-29T15:39:00+02:00</published><updated>2021-04-29T15:39:00+02:00</updated><id>https://gourlaysama.github.io/tech/21/fedora-dnf-tips</id><content type="html" xml:base="https://gourlaysama.github.io/tech/21/fedora-dnf-tips">&lt;p&gt;Fedora’s DNF package manager is easy to use for everyday tasks, but it’s also easy to miss
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://gourlaysama.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://gourlaysama.github.io/" rel="alternate" type="text/html" /><updated>2022-02-14T18:31:36+01:00</updated><id>https://gourlaysama.github.io/feed.xml</id><title type="html">Gourlaysama’s blog</title><subtitle>My blog</subtitle><author><name>Antoine Gourlay</name></author><entry><title type="html">Going further with DNF in Fedora</title><link href="https://gourlaysama.github.io/tech/21/fedora-dnf-tips" rel="alternate" type="text/html" title="Going further with DNF in Fedora" /><published>2021-04-29T15:39:00+02:00</published><updated>2021-04-29T15:39:00+02:00</updated><id>https://gourlaysama.github.io/tech/21/fedora-dnf-tips</id><content type="html" xml:base="https://gourlaysama.github.io/tech/21/fedora-dnf-tips"><![CDATA[<p>Fedora’s DNF package manager is easy to use for everyday tasks, but it’s also easy to miss
 some very useful lesser known features.
-&lt;!--more--&gt;
-This article will look at how to accomplish more with the typical DNF commands you already use.&lt;/p&gt;
+<!--more-->
+This article will look at how to accomplish more with the typical DNF commands you already use.</p>
 
-&lt;h2 id=&quot;running-without-the-network&quot;&gt;Running without the network&lt;/h2&gt;
+<h2 id="running-without-the-network">Running without the network</h2>
 
-&lt;p&gt;DNF regularly connects to the network to refresh metadata&lt;label for=&quot;1&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;1&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;The default in Fedora
+<p>DNF regularly connects to the network to refresh metadata<label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle" /><span class="sidenote">The default in Fedora
 is seven days for base repositories and six hours for update repositories. This can be changed
-with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;metadata_expire&lt;/code&gt; configuration option. &lt;/span&gt;. This slows down even commands that do not
-need information from a repository to work.&lt;/p&gt;
+with the <code class="language-plaintext highlighter-rouge">metadata_expire</code> configuration option. </span>. This slows down even commands that do not
+need information from a repository to work.</p>
 
-&lt;p&gt;You can run with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-C/--cacheonly&lt;/code&gt; option to skip the network:&lt;/p&gt;
+<p>You can run with the <code class="language-plaintext highlighter-rouge">-C/--cacheonly</code> option to skip the network:</p>
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; list installed &lt;span class=&quot;s1&quot;&gt;&apos;gtk*&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh console highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dnf <span class="nt">-C</span> list installed <span class="s1">'gtk*'</span>
+</code></pre></div></div>
 
-&lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Installed Packages
+<pre class="larger"><code class="language-none">Installed Packages
 gtk-update-icon-cache.x86_64      3.24.28-2.fc33        @updates
 gtk-vnc2.x86_64                   1.0.0-3.fc33          @fedora
 gtk2.x86_64                       2.24.33-1.fc33        @updates
@@ -25,41 +25,41 @@ gtkmm30.x86_64                    3.24.4-1.fc33         @updates
 gtksourceview3.x86_64             3.24.11-4.fc33        @fedora
 gtksourceview4.x86_64             4.8.1-1.fc33          @updates
 gtkspell3.x86_64                  3.0.10-6.fc33         @fedora
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;This option always uses the system cache (the cache of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root&lt;/code&gt; user), which is presumably
+<p>This option always uses the system cache (the cache of the <code class="language-plaintext highlighter-rouge">root</code> user), which is presumably
 more up-to-date than the cache of the local user. You will however get an error if you try to
 install a package with this, since the cache normally never contains packages waiting to be
-installed.&lt;/p&gt;
+installed.</p>
 
-&lt;h2 id=&quot;fedoras-archive-repository&quot;&gt;Fedora’s archive repository&lt;/h2&gt;
+<h2 id="fedoras-archive-repository">Fedora’s archive repository</h2>
 
-&lt;p&gt;The normal Fedora repositories only keep two versions of the same package: the latest (in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updates&lt;/code&gt;
-repository), and the first one for the current version of Fedora (in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fedora&lt;/code&gt; repository). This
-can be seen by listing duplicates of a package:&lt;/p&gt;
+<p>The normal Fedora repositories only keep two versions of the same package: the latest (in the <code class="language-plaintext highlighter-rouge">updates</code>
+repository), and the first one for the current version of Fedora (in the <code class="language-plaintext highlighter-rouge">fedora</code> repository). This
+can be seen by listing duplicates of a package:</p>
 
-&lt;p class=&quot;bnote&quot;&gt;&lt;label for=&quot;mm-systemd-ver&quot; class=&quot;margin-toggle&quot;&gt; &amp;#8853;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;mm-systemd-ver&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;Note the only two options under &lt;code&gt;Available Packages&lt;/code&gt;: &lt;code&gt;246.6-3&lt;/code&gt; at the time Fedora 33 was released, and
-&lt;code&gt;246.13-1&lt;/code&gt;, the current version. &lt;/span&gt;&lt;/p&gt;
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; list &lt;span class=&quot;nt&quot;&gt;--showduplicates&lt;/span&gt; systemd.x86_64
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<p class="bnote"><label for="mm-systemd-ver" class="margin-toggle"> &#8853;</label><input type="checkbox" id="mm-systemd-ver" class="margin-toggle" /><span class="marginnote">Note the only two options under <code>Available Packages</code>: <code>246.6-3</code> at the time Fedora 33 was released, and
+<code>246.13-1</code>, the current version. </span></p>
+<div class="language-sh console highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dnf <span class="nt">-C</span> list <span class="nt">--showduplicates</span> systemd.x86_64
+</code></pre></div></div>
 
-&lt;pre&gt;&lt;code class=&quot;language-none&quot;&gt;Installed Packages
+<pre><code class="language-none">Installed Packages
 systemd.x86_64         246.13-1.fc33      @updates
 Available Packages
 systemd.x86_64         246.6-3.fc33       fedora
 systemd.x86_64         246.13-1.fc33      updates
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;h3 id=&quot;downgrading-a-package&quot;&gt;Downgrading a package&lt;/h3&gt;
+<h3 id="downgrading-a-package">Downgrading a package</h3>
 
-&lt;p&gt;As a result, downgrading a package in Fedora, while theoretically easy, can cause surprises.
-For example, trying to downgrade &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;systemd&lt;/code&gt; will go all the way down seven (minor) versions, to the
-version from the Fedora 33 release:&lt;/p&gt;
+<p>As a result, downgrading a package in Fedora, while theoretically easy, can cause surprises.
+For example, trying to downgrade <code class="language-plaintext highlighter-rouge">systemd</code> will go all the way down seven (minor) versions, to the
+version from the Fedora 33 release:</p>
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf downgrade systemd
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf downgrade systemd
+</code></pre></div></div>
 
-&lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Dependencies resolved.
+<pre class="larger"><code class="language-none">Dependencies resolved.
 ===============================================================================
  Package                  Architecture Version              Repository    Size
 ===============================================================================
@@ -76,28 +76,28 @@ Downgrading:
 Transaction Summary
 ===============================================================================
 Downgrade  8 Packages
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;That usually isn’t what you want when trying to downgrade a recently updated package.&lt;/p&gt;
+<p>That usually isn’t what you want when trying to downgrade a recently updated package.</p>
 
-&lt;h3 id=&quot;using-the-archive-repository&quot;&gt;Using the archive repository&lt;/h3&gt;
+<h3 id="using-the-archive-repository">Using the archive repository</h3>
 
-&lt;p class=&quot;info&quot;&gt;&lt;strong&gt;Edit&lt;/strong&gt; (May 5, 2021): The repository is now enabled by default when installed; the section
-was changed to reflect this.&lt;/p&gt;
+<p class="info"><strong>Edit</strong> (May 5, 2021): The repository is now enabled by default when installed; the section
+was changed to reflect this.</p>
 
-&lt;p&gt;Fortunately Fedora includes a repository that contains all packages that ever reached the
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updates&lt;/code&gt; repository. After installing it, and setting it as disabled by default:&lt;label for=&quot;2&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;2&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;since &lt;a href=&quot;https://bodhi.fedoraproject.org/updates/FEDORA-2021-6348d6bf2c&quot;&gt;this update&lt;/a&gt; all versions of Fedora (except rawhide) have it enabled by default. The rational is that it is normally only installed on editions that actually need it (like &lt;a href=&quot;https://fedoramagazine.org/what-is-silverblue/&quot;&gt;Fedora Silverblue&lt;/a&gt;). &lt;/span&gt;&lt;/p&gt;
+<p>Fortunately Fedora includes a repository that contains all packages that ever reached the
+<code class="language-plaintext highlighter-rouge">updates</code> repository. After installing it, and setting it as disabled by default:<label for="2" class="margin-toggle sidenote-number"></label><input type="checkbox" id="2" class="margin-toggle" /><span class="sidenote">since <a href="https://bodhi.fedoraproject.org/updates/FEDORA-2021-6348d6bf2c">this update</a> all versions of Fedora (except rawhide) have it enabled by default. The rational is that it is normally only installed on editions that actually need it (like <a href="https://fedoramagazine.org/what-is-silverblue/">Fedora Silverblue</a>). </span></p>
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;fedora-repos-archive
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf config-manager &lt;span class=&quot;nt&quot;&gt;--set-disabled&lt;/span&gt; updates-archive
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nb">install </span>fedora-repos-archive
+<span class="nb">sudo </span>dnf config-manager <span class="nt">--set-disabled</span> updates-archive
+</code></pre></div></div>
 
-&lt;p&gt;It becomes available for use, and contains everything you might expect:&lt;/p&gt;
+<p>It becomes available for use, and contains everything you might expect:</p>
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf list &lt;span class=&quot;nt&quot;&gt;--showduplicates&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--enablerepo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;updates-archive systemd.x86_64
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh console highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dnf list <span class="nt">--showduplicates</span> <span class="nt">--enablerepo</span><span class="o">=</span>updates-archive systemd.x86_64
+</code></pre></div></div>
 
-&lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Installed Packages
+<pre class="larger"><code class="language-none">Installed Packages
 systemd.x86_64         246.13-1.fc33      @updates
 Available Packages
 systemd.x86_64         246.6-3.fc33       fedora
@@ -106,13 +106,13 @@ systemd.x86_64         246.7-2.fc33       updates-archive
 systemd.x86_64         246.10-1.fc33      updates-archive
 systemd.x86_64         246.13-1.fc33      updates
 systemd.x86_64         246.13-1.fc33      updates-archive
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p class=&quot;bnote&quot;&gt;&lt;label for=&quot;mm-systemd-2&quot; class=&quot;margin-toggle&quot;&gt; &amp;#8853;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;mm-systemd-2&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;The more recent &lt;code&gt;246.10-1&lt;/code&gt; version is now available! &lt;/span&gt;&lt;/p&gt;
-&lt;div class=&quot;language-sh console console-cont highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf downgrade &lt;span class=&quot;nt&quot;&gt;--enablerepo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;updates-archive systemd
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<p class="bnote"><label for="mm-systemd-2" class="margin-toggle"> &#8853;</label><input type="checkbox" id="mm-systemd-2" class="margin-toggle" /><span class="marginnote">The more recent <code>246.10-1</code> version is now available! </span></p>
+<div class="language-sh console console-cont highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf downgrade <span class="nt">--enablerepo</span><span class="o">=</span>updates-archive systemd
+</code></pre></div></div>
 
-&lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Dependencies resolved.
+<pre class="larger"><code class="language-none">Dependencies resolved.
 ===============================================================================
  Package                Arch       Version           Repository           Size
 ===============================================================================
@@ -129,28 +129,28 @@ Downgrading:
 Transaction Summary
 ===============================================================================
 Downgrade  8 Packages
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;h3 id=&quot;undoing-history&quot;&gt;Undoing history&lt;/h3&gt;
+<h3 id="undoing-history">Undoing history</h3>
 
-&lt;p&gt;This also allows to successfully undo transactions with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dnf history undo&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dnf history rollback&lt;/code&gt;:&lt;/p&gt;
+<p>This also allows to successfully undo transactions with <code class="language-plaintext highlighter-rouge">dnf history undo</code> and <code class="language-plaintext highlighter-rouge">dnf history rollback</code>:</p>
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;history &lt;/span&gt;undo last 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nb">history </span>undo last 
+</code></pre></div></div>
 
-&lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Error: The following problems occurred while running a transaction:
-  Cannot find rpm nevra &quot;fedpkg-1.40-5.fc33.noarch&quot;.
-  Cannot find rpm nevra &quot;vim-X11-2:8.2.2637-1.fc33.x86_64&quot;.
-  Cannot find rpm nevra &quot;vim-common-2:8.2.2637-1.fc33.x86_64&quot;.
-  Cannot find rpm nevra &quot;vim-enhanced-2:8.2.2637-1.fc33.x86_64&quot;.
-  Cannot find rpm nevra &quot;vim-filesystem-2:8.2.2637-1.fc33.noarch&quot;.
-  Cannot find rpm nevra &quot;vim-minimal-2:8.2.2637-1.fc33.x86_64&quot;.
-&lt;/code&gt;&lt;/pre&gt;
+<pre class="larger"><code class="language-none">Error: The following problems occurred while running a transaction:
+  Cannot find rpm nevra "fedpkg-1.40-5.fc33.noarch".
+  Cannot find rpm nevra "vim-X11-2:8.2.2637-1.fc33.x86_64".
+  Cannot find rpm nevra "vim-common-2:8.2.2637-1.fc33.x86_64".
+  Cannot find rpm nevra "vim-enhanced-2:8.2.2637-1.fc33.x86_64".
+  Cannot find rpm nevra "vim-filesystem-2:8.2.2637-1.fc33.noarch".
+  Cannot find rpm nevra "vim-minimal-2:8.2.2637-1.fc33.x86_64".
+</code></pre>
 
-&lt;div class=&quot;language-sh console console-cont highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;history &lt;/span&gt;undo last &lt;span class=&quot;nt&quot;&gt;--enablerepo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;updates-archive
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh console console-cont highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nb">history </span>undo last <span class="nt">--enablerepo</span><span class="o">=</span>updates-archive
+</code></pre></div></div>
 
-&lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Dependencies resolved.
+<pre class="larger"><code class="language-none">Dependencies resolved.
 ===============================================================================
  Package            Arch       Version               Repository           Size
 ===============================================================================
@@ -165,65 +165,65 @@ Downgrading:
 Transaction Summary
 ===============================================================================
 Downgrade  6 Packages
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Note that the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updates-archive&lt;/code&gt; repository should probably be kept disabled by default, because
-querying it is significantly slower than other repositories&lt;label for=&quot;3&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;3&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Because it has a lot
-more metadata than normal: it only ever keeps growing in size, while the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updates&lt;/code&gt; repository is
-cleaned of old packages to keep it fast. &lt;/span&gt;. If you don’t mind the metadata download times, you
-can remove the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--enable-repo&lt;/code&gt; arguments above after enabling the repository
-with:&lt;/p&gt;
+<p>Note that the <code class="language-plaintext highlighter-rouge">updates-archive</code> repository should probably be kept disabled by default, because
+querying it is significantly slower than other repositories<label for="3" class="margin-toggle sidenote-number"></label><input type="checkbox" id="3" class="margin-toggle" /><span class="sidenote">Because it has a lot
+more metadata than normal: it only ever keeps growing in size, while the <code class="language-plaintext highlighter-rouge">updates</code> repository is
+cleaned of old packages to keep it fast. </span>. If you don’t mind the metadata download times, you
+can remove the <code class="language-plaintext highlighter-rouge">--enable-repo</code> arguments above after enabling the repository
+with:</p>
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf config-manager &lt;span class=&quot;nt&quot;&gt;--set-enabled&lt;/span&gt; updates-archive
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf config-manager <span class="nt">--set-enabled</span> updates-archive
+</code></pre></div></div>
 
-&lt;h3 id=&quot;locking-a-package-in-place&quot;&gt;Locking a package in place&lt;/h3&gt;
+<h3 id="locking-a-package-in-place">Locking a package in place</h3>
 
-&lt;p&gt;Keeping a downgraded package around can be annoying if DNF tries to upgrade it back again all
-the time.&lt;/p&gt;
+<p>Keeping a downgraded package around can be annoying if DNF tries to upgrade it back again all
+the time.</p>
 
-&lt;p&gt;However, there is a &lt;a href=&quot;https://dnf-plugins-core.readthedocs.io/en/latest/versionlock.html&quot;&gt;DNF command for this&lt;/a&gt;,
-though you might have to install it first:&lt;/p&gt;
+<p>However, there is a <a href="https://dnf-plugins-core.readthedocs.io/en/latest/versionlock.html">DNF command for this</a>,
+though you might have to install it first:</p>
 
-&lt;p&gt;&lt;label for=&quot;mm-lock&quot; class=&quot;margin-toggle&quot;&gt; ⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;mm-lock&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;Yes, this can be used to locate and install DNF commands, see below. &lt;/span&gt;&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;dnf-command(versionlock)&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<p><label for="mm-lock" class="margin-toggle"> ⊕</label><input type="checkbox" id="mm-lock" class="margin-toggle" /><span class="marginnote">Yes, this can be used to locate and install DNF commands, see below. </span></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nb">install</span> <span class="s1">'dnf-command(versionlock)'</span>
+</code></pre></div></div>
 
-&lt;p&gt;Then it can be used to lock packages in place:&lt;/p&gt;
+<p>Then it can be used to lock packages in place:</p>
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; versionlock add &lt;span class=&quot;s1&quot;&gt;&apos;vim*&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nt">-C</span> versionlock add <span class="s1">'vim*'</span>
+</code></pre></div></div>
 
-&lt;pre&gt;&lt;code class=&quot;language-none&quot;&gt;Adding versionlock on: vim-minimal-2:8.2.2735-1.fc33.*
+<pre><code class="language-none">Adding versionlock on: vim-minimal-2:8.2.2735-1.fc33.*
 Adding versionlock on: vim-powerline-0:2.8.2-1.fc33.*
 Adding versionlock on: vim-filesystem-2:8.2.2735-1.fc33.*
 Adding versionlock on: vim-common-2:8.2.2735-1.fc33.*
 Adding versionlock on: vim-X11-2:8.2.2735-1.fc33.*
 Adding versionlock on: vim-enhanced-2:8.2.2735-1.fc33.*
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;You can for example use it to lock a package to minor updates:&lt;/p&gt;
+<p>You can for example use it to lock a package to minor updates:</p>
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; versionlock add &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;firefox-88.*&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nt">-C</span> versionlock add <span class="nt">--raw</span> <span class="s1">'firefox-88.*'</span>
+</code></pre></div></div>
 
-&lt;p&gt;Or on the contrary exclude minor updates and wait for the next major one:&lt;/p&gt;
+<p>Or on the contrary exclude minor updates and wait for the next major one:</p>
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; versionlock exclude &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;firefox-88.*&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nt">-C</span> versionlock exclude <span class="nt">--raw</span> <span class="s1">'firefox-88.*'</span>
+</code></pre></div></div>
 
-&lt;p&gt;This can be used to include or exclude packages in a more precise way, compared to adding
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exclude&lt;/code&gt; entries in the DNF configuration.&lt;/p&gt;
+<p>This can be used to include or exclude packages in a more precise way, compared to adding
+<code class="language-plaintext highlighter-rouge">exclude</code> entries in the DNF configuration.</p>
 
-&lt;h2 id=&quot;paths-instead-of-package-names&quot;&gt;Paths instead of package names&lt;/h2&gt;
+<h2 id="paths-instead-of-package-names">Paths instead of package names</h2>
 
-&lt;p&gt;Several DNF commands support using paths on the file-system instead of a package name.
-The obvious example is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;provide&lt;/code&gt;, which displays packages that provide the file at that path:&lt;/p&gt;
+<p>Several DNF commands support using paths on the file-system instead of a package name.
+The obvious example is <code class="language-plaintext highlighter-rouge">provide</code>, which displays packages that provide the file at that path:</p>
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf provides /etc/vimrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh console highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dnf provides /etc/vimrc
+</code></pre></div></div>
 
-&lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Last metadata expiration check: 1:55:07 ago on Mon 26 Apr 2021 10:19:03 AM CEST.
+<pre class="larger"><code class="language-none">Last metadata expiration check: 1:55:07 ago on Mon 26 Apr 2021 10:19:03 AM CEST.
 vim-common-2:8.2.1770-1.fc33.x86_64 : The common files needed by any version of the VIM editor
 Repo        : fedora
 Matched from:
@@ -233,28 +233,28 @@ vim-common-2:8.2.2787-1.fc33.x86_64 : The common files needed by any version of 
 Repo        : updates
 Matched from:
 Filename    : /etc/vimrc
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;As a special convenience, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dnf provide&lt;/code&gt; will prefix&lt;label for=&quot;4&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;4&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;this only works with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;provide&lt;/code&gt;! &lt;/span&gt;
- the search term with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/bin/&lt;/code&gt; if there is no match (and then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/sbin&lt;/code&gt;), so the
-following will work:&lt;/p&gt;
+<p>As a special convenience, <code class="language-plaintext highlighter-rouge">dnf provide</code> will prefix<label for="4" class="margin-toggle sidenote-number"></label><input type="checkbox" id="4" class="margin-toggle" /><span class="sidenote">this only works with <code class="language-plaintext highlighter-rouge">provide</code>! </span>
+ the search term with <code class="language-plaintext highlighter-rouge">/usr/bin/</code> if there is no match (and then <code class="language-plaintext highlighter-rouge">/usr/sbin</code>), so the
+following will work:</p>
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf provides bzcat
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dnf provides bzcat
+</code></pre></div></div>
 
-&lt;p&gt;But the path doesn’t actually have to exist locally at all. For example, when installing a
-package:&lt;/p&gt;
+<p>But the path doesn’t actually have to exist locally at all. For example, when installing a
+package:</p>
 
-&lt;p&gt;&lt;label for=&quot;mm-dnf-path&quot; class=&quot;margin-toggle&quot;&gt; ⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;mm-dnf-path&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;Note that it needs to be an &lt;em&gt;absolute&lt;/em&gt; path here, otherwise you should use a wildcard. &lt;/span&gt;&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; /usr/bin/gvim
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<p><label for="mm-dnf-path" class="margin-toggle"> ⊕</label><input type="checkbox" id="mm-dnf-path" class="margin-toggle" /><span class="marginnote">Note that it needs to be an <em>absolute</em> path here, otherwise you should use a wildcard. </span></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nb">install</span> /usr/bin/gvim
+</code></pre></div></div>
 
-&lt;p&gt;Wildcards can also be used:&lt;/p&gt;
+<p>Wildcards can also be used:</p>
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf provides &lt;span class=&quot;s1&quot;&gt;&apos;*/libbz2.so*&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh console highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dnf provides <span class="s1">'*/libbz2.so*'</span>
+</code></pre></div></div>
 
-&lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Last metadata expiration check: 1 day, 18:45:49 ago on Sat 17 Apr 2021 07:43:37 PM CEST.
+<pre class="larger"><code class="language-none">Last metadata expiration check: 1 day, 18:45:49 ago on Sat 17 Apr 2021 07:43:37 PM CEST.
 bzip2-devel-1.0.8-4.fc33.i686 : Libraries and header files for apps which will use bzip2
 Repo        : fedora
 Matched from:
@@ -276,35 +276,35 @@ Repo        : fedora
 Matched from:
 Filename    : /usr/lib64/libbz2.so.1
 Filename    : /usr/lib64/libbz2.so.1.0.8
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;This can be particularly useful to re-install locally modified files:&lt;/p&gt;
+<p>This can be particularly useful to re-install locally modified files:</p>
 
-&lt;p&gt;&lt;label for=&quot;mm-reinstall-config&quot; class=&quot;margin-toggle&quot;&gt; ⊕&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;mm-reinstall-config&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;marginnote&quot;&gt;Note that this will not work for most configuration files in
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc&lt;/code&gt; since packages are usually instructed to leave local configuration changes alone. &lt;/span&gt;&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf reinstall &lt;span class=&quot;s1&quot;&gt;&apos;/usr/share/themes/*&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf reinstall &lt;span class=&quot;s1&quot;&gt;&apos;/boot/*&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<p><label for="mm-reinstall-config" class="margin-toggle"> ⊕</label><input type="checkbox" id="mm-reinstall-config" class="margin-toggle" /><span class="marginnote">Note that this will not work for most configuration files in
+<code class="language-plaintext highlighter-rouge">/etc</code> since packages are usually instructed to leave local configuration changes alone. </span></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf reinstall <span class="s1">'/usr/share/themes/*'</span>
+<span class="nb">sudo </span>dnf reinstall <span class="s1">'/boot/*'</span>
+</code></pre></div></div>
 
-&lt;h2 id=&quot;rich-dependencies&quot;&gt;Rich dependencies&lt;/h2&gt;
+<h2 id="rich-dependencies">Rich dependencies</h2>
 
-&lt;p&gt;Packages in Fedora can provide more that file paths. They also expose richer information
-about what becomes available once the package is installed.&lt;/p&gt;
+<p>Packages in Fedora can provide more that file paths. They also expose richer information
+about what becomes available once the package is installed.</p>
 
-&lt;h3 id=&quot;missing-libraries&quot;&gt;Missing libraries&lt;/h3&gt;
+<h3 id="missing-libraries">Missing libraries</h3>
 
-&lt;p&gt;Packages expose native library dependencies directly, so an error message like this:&lt;/p&gt;
+<p>Packages expose native library dependencies directly, so an error message like this:</p>
 
-&lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;error while loading shared libraries: libbz2.so.1: \
+<pre class="larger"><code class="language-none">error while loading shared libraries: libbz2.so.1: \
   cannot open shared object file: No such file or directory
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;p&gt;Can be diagnosed with:&lt;/p&gt;
+<p>Can be diagnosed with:</p>
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf provides &lt;span class=&quot;s1&quot;&gt;&apos;libbz2.so.*&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh console highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dnf provides <span class="s1">'libbz2.so.*'</span>
+</code></pre></div></div>
 
-&lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Last metadata expiration check: 2:03:46 ago on Tue Apr 20 08:19:21 2021.
+<pre class="larger"><code class="language-none">Last metadata expiration check: 2:03:46 ago on Tue Apr 20 08:19:21 2021.
 bzip2-libs-1.0.8-4.fc33.i686 : Libraries for applications using bzip2
 Repo        : fedora
 Matched from:
@@ -319,19 +319,19 @@ bzip2-libs-1.0.8-4.fc33.x86_64 : Libraries for applications using bzip2
 Repo        : fedora
 Matched from:
 Provide    : libbz2.so.1()(64bit)
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;h3 id=&quot;build-dependencies&quot;&gt;Build dependencies&lt;/h3&gt;
+<h3 id="build-dependencies">Build dependencies</h3>
 
-&lt;p&gt;When manually compiling programs, build systems often use  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pkgconfig&lt;/code&gt; to locate
+<p>When manually compiling programs, build systems often use  <code class="language-plaintext highlighter-rouge">pkgconfig</code> to locate
 dependencies. The same dependency names can be used with DNF, regardless of the
-actual name of the package:&lt;/p&gt;
+actual name of the package:</p>
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# before compiling a program that requires dbus&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pkgconfig(dbus-1)&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># before compiling a program that requires dbus</span>
+<span class="nb">sudo </span>dnf <span class="nb">install</span> <span class="s1">'pkgconfig(dbus-1)'</span>
+</code></pre></div></div>
 
-&lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;Dependencies resolved.
+<pre class="larger"><code class="language-none">Dependencies resolved.
 ===============================================================================
  Package                 Arch        Version                Repository    Size
 ===============================================================================
@@ -347,58 +347,58 @@ Installing dependencies:
 Transaction Summary
 ===============================================================================
 Install  6 Packages
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;h3 id=&quot;fonts&quot;&gt;Fonts&lt;/h3&gt;
+<h3 id="fonts">Fonts</h3>
 
-&lt;p&gt;Packaged fonts can be installed by name:&lt;/p&gt;
+<p>Packaged fonts can be installed by name:</p>
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;font&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;firasans&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# or all the fira fonts:&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;font&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fira&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nb">install </span>font<span class="o">(</span>firasans<span class="o">)</span>
+<span class="c"># or all the fira fonts:</span>
+<span class="nb">sudo </span>dnf <span class="nb">install </span>font<span class="o">(</span>fira<span class="k">*</span><span class="o">)</span>
+</code></pre></div></div>
 
-&lt;p&gt;Thus you can list all fonts packaged in Fedora with:&lt;/p&gt;
+<p>Thus you can list all fonts packaged in Fedora with:</p>
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dnf provides &lt;span class=&quot;s1&quot;&gt;&apos;font(*)&apos;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;Provide | &lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dnf provides <span class="s1">'font(*)'</span> | <span class="nb">grep </span>Provide | <span class="nb">sort</span> <span class="nt">-u</span>
+</code></pre></div></div>
 
-&lt;h3 id=&quot;dnf-commands&quot;&gt;DNF commands&lt;/h3&gt;
+<h3 id="dnf-commands">DNF commands</h3>
 
-&lt;p&gt;You sometimes see DNF commands that are not available on a system by default—in blog
-posts for example. Those can be installed by DNF with:&lt;/p&gt;
+<p>You sometimes see DNF commands that are not available on a system by default—in blog
+posts for example. Those can be installed by DNF with:</p>
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;dnf-command(torproxy)&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nb">install</span> <span class="s1">'dnf-command(torproxy)'</span>
+</code></pre></div></div>
 
-&lt;h3 id=&quot;libraries-from-various-ecosystems&quot;&gt;Libraries from various ecosystems&lt;/h3&gt;
+<h3 id="libraries-from-various-ecosystems">Libraries from various ecosystems</h3>
 
-&lt;p&gt;It is sometimes useful to have a library installed in the standard Python/Ruby/…
+<p>It is sometimes useful to have a library installed in the standard Python/Ruby/…
 environment provided by Fedora. The naming of packages is usually consistent enough that
-you can guess where to find something, but you can also use the following:&lt;/p&gt;
+you can guess where to find something, but you can also use the following:</p>
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;rubygem(bundler)&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;perl(Socket)&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;python3dist(httplib2)&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;dnf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;ocaml(Rope)&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dnf <span class="nb">install</span> <span class="s1">'rubygem(bundler)'</span>
+<span class="nb">sudo </span>dnf <span class="nb">install</span> <span class="s1">'perl(Socket)'</span>
+<span class="nb">sudo </span>dnf <span class="nb">install</span> <span class="s1">'python3dist(httplib2)'</span>
+<span class="nb">sudo </span>dnf <span class="nb">install</span> <span class="s1">'ocaml(Rope)'</span>
+</code></pre></div></div>
 
-&lt;h3 id=&quot;mime-handlers&quot;&gt;MIME handlers&lt;/h3&gt;
+<h3 id="mime-handlers">MIME handlers</h3>
 
-&lt;p&gt;DNF can be used to find applications capable of opening a file, using its &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mime-type&lt;/code&gt;:&lt;/p&gt;
+<p>DNF can be used to find applications capable of opening a file, using its <code class="language-plaintext highlighter-rouge">mime-type</code>:</p>
 
-&lt;div class=&quot;language-sh console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# what is that unknown file?&lt;/span&gt;
-file &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--mime-type&lt;/span&gt; pres.ppt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># what is that unknown file?</span>
+file <span class="nt">-b</span> <span class="nt">--mime-type</span> pres.ppt
+</code></pre></div></div>
 
-&lt;pre&gt;&lt;code class=&quot;language-none&quot;&gt;application/vnd.ms-powerpoint
-&lt;/code&gt;&lt;/pre&gt;
+<pre><code class="language-none">application/vnd.ms-powerpoint
+</code></pre>
 
-&lt;div class=&quot;language-sh console console-cont highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# how can I open it?&lt;/span&gt;
-dnf provides &lt;span class=&quot;s1&quot;&gt;&apos;mimehandler(application/vnd.ms-powerpoint)&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+<div class="language-sh console console-cont highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># how can I open it?</span>
+dnf provides <span class="s1">'mimehandler(application/vnd.ms-powerpoint)'</span>
+</code></pre></div></div>
 
-&lt;pre class=&quot;larger&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;calligra-okular-odpgenerator-3.2.1-4.fc33.i686 : OpenDocument presenter support for okular
+<pre class="larger"><code class="language-none">calligra-okular-odpgenerator-3.2.1-4.fc33.i686 : OpenDocument presenter support for okular
 Repo        : fedora
 Matched from:
 Provide    : mimehandler(application/vnd.ms-powerpoint)
@@ -422,20 +422,20 @@ libreoffice-impress-1:7.0.5.2-1.fc33.x86_64 : LibreOffice Presentation Applicati
 Repo        : updates
 Matched from:
 Provide    : mimehandler(application/vnd.ms-powerpoint)
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
-&lt;h2 id=&quot;wrapping-up&quot;&gt;Wrapping up&lt;/h2&gt;
+<h2 id="wrapping-up">Wrapping up</h2>
 
-&lt;p&gt;These are just some of DNF’s less used features that can help managing your system.
-Hopefully this has been useful to make your life on the command line easier.&lt;/p&gt;
+<p>These are just some of DNF’s less used features that can help managing your system.
+Hopefully this has been useful to make your life on the command line easier.</p>
 
-&lt;p&gt;For a more complete tour of DNF see the &lt;a href=&quot;https://dnf.readthedocs.io/en/latest/&quot;&gt;DNF documentation&lt;/a&gt; and the &lt;a href=&quot;https://dnf-plugins-core.readthedocs.io/en/latest/index.html&quot;&gt;Core DNF Plugins Documentation&lt;/a&gt;.&lt;/p&gt;</content><author><name>Antoine Gourlay</name></author><category term="tech" /><category term="Fedora" /><summary type="html">Fedora’s DNF package manager is easy to use for everyday tasks, but it’s also easy to miss some very useful lesser known features.</summary></entry><entry><title type="html">Hello, world</title><link href="https://gourlaysama.github.io/other/21/hello-world" rel="alternate" type="text/html" title="Hello, world" /><published>2021-04-22T14:52:00+02:00</published><updated>2021-04-22T14:52:00+02:00</updated><id>https://gourlaysama.github.io/other/21/hello-world</id><content type="html" xml:base="https://gourlaysama.github.io/other/21/hello-world">&lt;p&gt;I’m beginning an attempt at blogging again.&lt;/p&gt;
+<p>For a more complete tour of DNF see the <a href="https://dnf.readthedocs.io/en/latest/">DNF documentation</a> and the <a href="https://dnf-plugins-core.readthedocs.io/en/latest/index.html">Core DNF Plugins Documentation</a>.</p>]]></content><author><name>Antoine Gourlay</name></author><category term="tech" /><category term="Fedora" /><summary type="html"><![CDATA[Fedora’s DNF package manager is easy to use for everyday tasks, but it’s also easy to miss some very useful lesser known features.]]></summary></entry><entry><title type="html">Hello, world</title><link href="https://gourlaysama.github.io/other/21/hello-world" rel="alternate" type="text/html" title="Hello, world" /><published>2021-04-22T14:52:00+02:00</published><updated>2021-04-22T14:52:00+02:00</updated><id>https://gourlaysama.github.io/other/21/hello-world</id><content type="html" xml:base="https://gourlaysama.github.io/other/21/hello-world"><![CDATA[<p>I’m beginning an attempt at blogging again.</p>
 
-&lt;!--more--&gt;
+<!--more-->
 
-&lt;p&gt;It’s been many years since I last blogged, but I’ve decided to start again. We’ll see where it
-goes.&lt;/p&gt;
+<p>It’s been many years since I last blogged, but I’ve decided to start again. We’ll see where it
+goes.</p>
 
-&lt;p&gt;The posts will be mostly technical—some Rust, some Scala, stuff about Fedora and Linux,
+<p>The posts will be mostly technical—some Rust, some Scala, stuff about Fedora and Linux,
 who knows what else—but I may blog about other things here and there. If needed I’ll add a
-dedicated feed for technical posts.&lt;/p&gt;</content><author><name>Antoine Gourlay</name></author><category term="other" /><category term="about" /><summary type="html">I’m beginning an attempt at blogging again.</summary></entry></feed>
+dedicated feed for technical posts.</p>]]></content><author><name>Antoine Gourlay</name></author><category term="other" /><category term="about" /><summary type="html"><![CDATA[I’m beginning an attempt at blogging again.]]></summary></entry></feed>
