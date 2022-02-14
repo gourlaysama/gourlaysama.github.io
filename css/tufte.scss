@@ -132,7 +132,6 @@ span > a {
       background-color: #fddfdf;
     }
   } @else {
-
     &:hover {
       color: $contrast-dim-color;
     }
@@ -972,7 +971,16 @@ footer {
   clear: both;
 }
 
-.listing-tags, .cat-feed-link, .listing-links {
+.footer-top {
+  float: right;
+  padding-right: 9.5%;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.listing-tags,
+.cat-feed-link,
+.listing-links {
   a {
     color: $contrast-color;
     text-decoration: none;
